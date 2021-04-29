@@ -9,6 +9,7 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
 
+  someField: any;
   ngOnInit(): void {
   }
 

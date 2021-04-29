@@ -8,15 +8,17 @@ import {PlaylistComponent} from './components/playlist/playlist.component';
 import {SuggestComponent} from './components/suggest/suggest.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { ArtistCardComponent } from './components/suggest/artist-card/artist-card.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MatIconModule,
-    MatSidenavModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        MatIconModule,
+        MatSidenavModule,
+        FormsModule
+    ]
 })
 export class HomeModule {
 }
