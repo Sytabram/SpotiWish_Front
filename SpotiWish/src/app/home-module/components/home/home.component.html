@@ -1,8 +1,66 @@
-<div id="content">
-  <div id="menu">
-    <app-sidebar></app-sidebar>
-  </div>
-  <div id="body-content">
-    <router-outlet></router-outlet>
+<div class="bg-gray-200">
+  <div class="flex flex-col sm:justify-around">
+
+    <div class="w-64 h-screen bg-gray-900 mt-0 sm:mt-0">
+      <div class="flex items-center justify-left ml-6 mt-10">
+        <img class="h-12" src="https://delight-data.com/wp-content/uploads/2019/10/spotify.svg">
+        <span class="mx-3 font-bold text-2xl text-white font-large">SpotiWish</span>
+      </div>
+
+      <nav class="mt-10">
+        <a class="flex items-center py-2 px-8 bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="#">
+          <mat-icon>home</mat-icon>
+          <span class="mx-4 font-medium">Accueil</span>
+        </a>
+
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="" routerLink="/search">
+          <mat-icon>search</mat-icon>
+          <span class="mx-4 font-medium">Rechercher</span>
+        </a>
+
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <mat-icon>library_music</mat-icon>
+          <span class="mx-4 font-medium">Bibliothèque</span>
+        </a>
+
+        <a class="flex items-center mt-8 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <mat-icon>add_box</mat-icon>
+          <span class="mx-4 font-medium">Créer une playlist</span>
+        </a>
+
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <mat-icon>favorite</mat-icon>
+          <span class="mx-4 font-medium">Titres likés</span>
+        </a>
+
+        <div class="flex items-center py-2 px-8">
+          <img src="../../../../assets/divider.png" >
+        </div>
+
+        <a class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 1</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 2</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 3</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 4</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 5</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 6</span>
+        </a>
+        <a class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:text-gray-100 hover:border-gray-100" href="#">
+          <span class="font-small">Playlist 7</span>
+        </a>
+
+      </nav>
+    </div>
   </div>
 </div>
+<router-outlet></router-outlet>
