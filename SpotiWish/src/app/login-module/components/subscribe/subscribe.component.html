@@ -1,1 +1,36 @@
-<p>subscribe works!</p>
+<!-- component -->
+<div class="min-h-screen py-6 flex flex-col justify-center">
+  <div class="bg fixed w-full h-full bg-cover filter blur" style="transform: scale(1.2,1.2)"></div>
+  <div class="flex space-x-4 px-4 justify-around">
+    <!-- CARD -->
+    <div class="font-semibold h-auto w-1/4 rounded-xl shadow-2xl flex flex-wrap justify-center items-center py-5" style="background-color: #121212">
+
+      <!-- TEXTS -->
+      <div class="mt-16 mb-16 text-center w-full text-2xl font-semibold text-white flex items-center justify-center">
+        <img class="h-16" src="https://delight-data.com/wp-content/uploads/2019/10/spotify.svg">
+        <div class="ml-2">SpotiWish</div>
+      </div>
+
+      <div class="w-full flex justify-around items-center">
+        <a [routerLink]="'/login'" class="border-b-2 border-transparent hover:border-red-600 text-sm text-white uppercase cursor-pointer">se connecter</a>
+        <a [routerLink]="'/subscribe'" class="border-b-2 border-red-500 hover:border-red-600 text-sm text-white uppercase cursor-pointer">s'inscrire</a>
+      </div>
+
+      <div class="mt-10">
+        <input name="field_name" class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="email" placeholder="Email" />
+      </div>
+      <div class="mt-10">
+        <input name="field_name" class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="text" placeholder="Username" />
+      </div>
+      <div class="mt-10">
+        <input name="field_name" class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="password" placeholder="Password" />
+      </div>
+      <div class="mt-10 mb-10">
+        <button class="font-semibold uppercase text-white w-80 h-16 bg-red-500 hover:bg-red-600 rounded-full shadow-2xl focus:outline-none" [routerLink]="'/home'">S'inscrire</button>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
