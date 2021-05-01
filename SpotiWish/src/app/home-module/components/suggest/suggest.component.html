@@ -1,6 +1,15 @@
 <!-- DONT FORGET DO h-full FIRST ON THE TOP -->
-<div class="border-2 border-transparent h-full bg-gradient-to-b from-red-900 via-black to-black">
-  <div class="flex flex-wrap h-2/5 mt-24 border-2 border-red-500 justify-between">
+<div class="h-full" style="background-color: #121212">
+  <div class="flex">
+    <button class="mt-4 ml-7 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+      <mat-icon class="text-white text-4xl">keyboard_arrow_left</mat-icon>
+    </button>
+    <button class="mt-4 ml-5 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+      <mat-icon class="text-white text-4xl">keyboard_arrow_right</mat-icon>
+    </button>
+    <span class="text-white ml-10 mt-5 text-2xl font-bold">Suggestions d'artiste</span>
+  </div>
+  <div class="flex flex-wrap">
     <app-artist-card *ngFor="let artist of artists" [artist]="artist"></app-artist-card>
   </div>
 </div>
