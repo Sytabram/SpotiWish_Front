@@ -1,1 +1,14 @@
-<p>playlist works!</p>
+<div class="h-full" style="background-color: #121212">
+  <div class="flex">
+    <button class="mt-4 ml-7 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+      <mat-icon class="text-white text-4xl">keyboard_arrow_left</mat-icon>
+    </button>
+    <button class="mt-4 ml-5 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+      <mat-icon class="text-white text-4xl">keyboard_arrow_right</mat-icon>
+    </button>
+    <span class="text-white ml-10 mt-5 text-2xl font-bold">Vos playlists</span>
+  </div>
+  <div class="flex flex-wrap">
+    <app-card-playlist *ngFor="let playlist of playlists" [playlist]="playlist"></app-card-playlist>
+  </div>
+</div>

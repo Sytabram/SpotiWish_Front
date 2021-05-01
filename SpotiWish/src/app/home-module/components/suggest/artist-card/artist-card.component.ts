@@ -9,6 +9,8 @@ export class ArtistCardComponent implements OnInit {
 
   @Input() artist: any; // decorate the property with @Input()
 
+
+
   constructor() { }
 
   ngOnInit(): void {
