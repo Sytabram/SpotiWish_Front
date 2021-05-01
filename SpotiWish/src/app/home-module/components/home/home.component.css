@@ -1,0 +1,7 @@
+.usernameButton{
+  background-color: #121212;
+}
+
+.usernameButton:hover{
+  background-color: #282828;
+}
