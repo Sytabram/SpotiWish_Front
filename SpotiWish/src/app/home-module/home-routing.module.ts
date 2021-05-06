@@ -4,6 +4,7 @@ import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {PlaylistComponent} from './components/playlist/playlist.component';
 import {SuggestComponent} from "./components/suggest/suggest.component";
+import {CreatePlaylistComponent} from './components/create-playlist/create-playlist.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: '', component: SuggestComponent },
       { path: 'search', component: SearchComponent },
       { path: 'playlist', component: PlaylistComponent },
+      { path: 'createPlaylist', component: CreatePlaylistComponent},
     ]
   }
 ];

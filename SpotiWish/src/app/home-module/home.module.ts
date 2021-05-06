@@ -14,9 +14,10 @@ import {FormsModule} from '@angular/forms';
 import {CardGenreComponent} from './components/search/card-genre/card-genre.component';
 import {CardPlaylistComponent} from './components/playlist/card-playlist/card-playlist.component';
 import {MatSliderModule} from "@angular/material/slider";
+import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent],
+  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
