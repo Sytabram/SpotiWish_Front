@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-artist-card',
@@ -13,5 +14,4 @@ export class ArtistCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

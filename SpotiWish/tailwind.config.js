@@ -13,6 +13,7 @@ module.exports = {
         'two-black': '#505050',
         'gray-clair': '#505050',
         'gray-fonce': '#282828',
+        'bordo': '#370505',
       }
     },
   },
