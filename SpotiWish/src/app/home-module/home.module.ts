@@ -14,9 +14,13 @@ import {FormsModule} from '@angular/forms';
 import {CardGenreComponent} from './components/search/card-genre/card-genre.component';
 import {CardPlaylistComponent} from './components/playlist/card-playlist/card-playlist.component';
 import {MatSliderModule} from "@angular/material/slider";
+import { ArtistComponent } from './components/artist/artist.component';
+import { AlbumCardComponent } from './components/artist/album-card/album-card.component';
+import { AlbumComponent } from './components/album/album.component';
+import { MusicCardComponent } from './components/album/music-card/music-card.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent],
+  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

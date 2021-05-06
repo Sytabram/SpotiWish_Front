@@ -9,7 +9,7 @@
     <span class="text-white ml-10 mt-5 text-2xl font-bold">Suggestions d'artiste</span>
   </div>
   <div class="flex flex-wrap">
-    <app-artist-card *ngFor="let artist of artists" [artist]="artist" (click)="goToArtist(artist)"></app-artist-card>
+    <app-music-card *ngFor="let song of album.Musics" [song]="song"></app-music-card>
   </div>
 </div>
 
