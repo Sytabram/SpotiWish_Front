@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HomeComponent} from "../home/home.component";
 
 @Component({
   selector: 'app-album',
@@ -15,4 +16,11 @@ export class AlbumComponent implements OnInit {
     console.log(this.album)
   }
 
+  playThisSong(song: any) {
+    localStorage.removeItem("playingSong")
+    let songStr = JSON.stringify(song);
+    localStorage.setItem("playingSong", songStr);
+
+    HomeComponent.playingSong = !HomeComponent.playingSong
+  }
 }

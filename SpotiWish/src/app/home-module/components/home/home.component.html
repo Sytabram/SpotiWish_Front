@@ -6,12 +6,12 @@
     </div>
 
     <!-- Profile Button -->
-    <div (click)="playingSong = !playingSong"
+    <div (click)="changePlayingSong()"
       class="usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
       USERNAME
     </div>
 
-    <!-- Profile Button -->
+    <!-- Logout Button -->
     <div [routerLink]="'/login'"
          class="usernameButton cursor-pointer top-15 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
       LOGOUT
@@ -61,53 +61,12 @@
       <a
         class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
         href="#">
-        <span class="font-small">Playlist 1</span>
+        <span class="font-small">Playlist 1</span>w
       </a>
     </nav>
 
-
     <!-- Playing Song Bar -->
-    <div *ngIf="playingSong" class="w-full h-24 bottom-0 fixed flex justify-between items-center border-t border-gray-500 select-none"
-         style="background-color: #181818">
-
-      <!-- Song Info -->
-      <div class="h-full w-auto flex items-center px-5">
-        <img src="assets/images/cover-album/Webp.net-resizeimage.jpg" alt="image3" class="object-cover shadow-2xl"
-             style="width: 80px; height: 80px">
-        <div class="flex flex-col ">
-          <span class="text-white pl-2 text-base cursor-pointer hover:underline">SONG NAME</span>
-          <span class="text-gray-400 pl-2 text-xs cursor-pointer hover:underline">ARTIST NAME</span>
-        </div>
-        <mat-icon class="ml-4 cursor-pointer text-xl">favorite_border</mat-icon>
-        <!--        <mat-icon>favorite</mat-icon>   -->
-      </div>
-
-      <!-- Song Action (Time bar, next, previous,...) -->
-      <div class="h-full w-1/3 flex items-center flex flex-col">
-        <!-- Action -->
-        <div class="w-full h-2/3 flex items-center justify-center">
-          <mat-icon class="mr-5 text-gray-500 cursor-pointer">skip_previous</mat-icon>
-          <mat-icon class="cursor-pointer">play_circle_filled</mat-icon>
-          <!--          <mat-icon>pause_circle_filled</mat-icon>-->
-          <mat-icon class="ml-5 text-gray-500 cursor-pointer">skip_next</mat-icon>
-        </div>
-        <!-- Time Bar -->
-        <div class="w-full h-1/3 flex items-center justify-center">
-          <span class="text-gray-400 text-xs">1:00</span>
-          <mat-slider class="w-full" value="60" step="1" max="180"></mat-slider>
-          <span class="text-gray-400 text-xs">3:00</span>
-        </div>
-      </div>
-
-      <!-- Song Volume -->
-      <div class="h-full w-auto flex items-center px-5">
-        <div class="flex justify-center items-center">
-          <mat-icon class="text-xl mb-2">volume_up</mat-icon>
-          <mat-slider class="w-full" value="30" step="1" max="100"></mat-slider>
-        </div>
-      </div>
-
-    </div>
+    <app-playing-bar-song *ngIf="getPlayingSongStatus()"></app-playing-bar-song>
 
   </mat-drawer>
   <mat-drawer-content>
