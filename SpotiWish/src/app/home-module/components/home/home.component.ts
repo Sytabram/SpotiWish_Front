@@ -8,7 +8,7 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   public href = ""
-  playingSong: boolean = false;
+  public static playingSong: boolean = false;
 
   constructor(private router: Router,) {
     // subscribe to router navigation
@@ -21,6 +21,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+
+  changePlayingSong(){
+    HomeComponent.playingSong = !HomeComponent.playingSong
+  }
+
+  getPlayingSongStatus(){
+    return HomeComponent.playingSong
   }
 
 }
