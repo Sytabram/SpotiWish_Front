@@ -1,15 +1,41 @@
 <div class="h-full overflow-hidden">
   <div class="bg-gradient-to-t from-one-black to-two-black" style="height: 22rem">
     <div class="flex">
-      <div class="ml-8 mt-7 h-60 w-60 flex items-center justify-center cursor-pointer bg-gray-fonce border-2 border-transparent hover:border-one-black hover:bg-opacity-20">
+      <button class="mt-4 ml-7 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+        <mat-icon class="text-white text-4xl">keyboard_arrow_left</mat-icon>
+      </button>
+      <button class="mt-4 ml-5 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
+        <mat-icon class="text-white text-4xl">keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+    <div class="flex">
+      <div class="ml-8 mt-7 h-60 w-60 flex items-center justify-center cursor-pointer bg-gray-fonce border-2 border-transparent hover:border-two-black hover:bg-opacity-20">
         <img class="h-12 w-12" src="../../../../assets/music.png" alt="logo music">
       </div>
       <div class="pt-36 pl-6 ">
-        <p class="cursor-pointer text-white text-7xl font-black ">Ma playlist n°15</p>
+        <p class="cursor-pointer text-white text-7xl font-black">Ma playlist n°15</p>
       </div>
     </div>
   </div>
   <div class="h-full" style="background-color: #121212">
+    <div class="pl-8 pt-10">
+      <button class="bg-gray-500 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-full">Supprimer la playlist</button>
+    </div>
 
+    <div class="w-auto border border-two-black mt-10"></div>
+
+    <div class="pl-8 pt-8">
+      <p class="text-white text-2xl font-medium">Cherchons du contenu à ajouter à votre playlist</p>
+    </div>
+
+    <div class="mt-4 ml-8 relative text-gray-600 flex">
+      <input [(ngModel)]="someField" type="text" name="search" placeholder="Rechercher un artiste..." class="h-10 w-80 px-5 rounded-full text-sm focus:outline-none">
+      <button *ngIf="!someField.length || someField.length === undefined" type="submit" class=" absolute mt-2 ml-72 focus:outline-none">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button *ngIf="someField.length" type="submit" class="absolute mt-2 ml-72 focus:outline-none">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

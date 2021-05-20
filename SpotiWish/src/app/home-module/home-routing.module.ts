@@ -8,6 +8,7 @@ import {ArtistCardComponent} from "./components/suggest/artist-card/artist-card.
 import {ArtistComponent} from "./components/artist/artist.component";
 import {AlbumComponent} from "./components/album/album.component";
 import {CreatePlaylistComponent} from './components/create-playlist/create-playlist.component';
+import {LikedSongComponent} from './components/liked-song/liked-song.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'artist', component: ArtistComponent },
       { path: 'album', component: AlbumComponent },
       { path: 'createPlaylist', component: CreatePlaylistComponent},
+      { path: 'likedSong', component: LikedSongComponent}
     ]
   }
 ];
