@@ -24,10 +24,18 @@
       </button>
     </div>
 
-    <div class="w-auto border border-two-black mt-10"></div>
+    <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center justify-center">
+          <div class="ml-14 text-gray-400">TITRE</div>
+        </div>
+        <p class="text-gray-400 mt-1">ALBUM</p>
+        <p class="text-gray-400 mt-1">DURÉE</p>
+      </div>
+    </div>
 
     <div class="pl-8 pt-8">
-      <p class="text-white text-2xl font-medium">Cherchons du contenu à ajouter à votre playlist</p>
+      <app-music-card *ngFor="let song of album.Musics" [song]="song" (click)="playThisSong(song)"></app-music-card>
     </div>
 
     <div class="mt-4 ml-8 relative text-gray-600 flex">
