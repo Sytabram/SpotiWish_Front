@@ -13,7 +13,10 @@ module.exports = {
         'two-black': '#505050',
         'gray-clair': '#505050',
         'gray-fonce': '#282828',
+        'purple-clair': '#50399B',
+        'purple-fonce': '#1F173B',
         'bordo': '#370505',
+        'red-page': '#B6213B',
       }
     },
   },
