@@ -1,13 +1,5 @@
 <div class="h-full" style="background-color: #121212">
-  <div class="flex">
-    <button class="mt-4 ml-7 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
-      <mat-icon class="text-white text-4xl">keyboard_arrow_left</mat-icon>
-    </button>
-    <button class="mt-4 ml-5 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
-      <mat-icon class="text-white text-4xl">keyboard_arrow_right</mat-icon>
-    </button>
-    <span class="text-white ml-10 mt-5 text-2xl font-bold">Suggestions d'artiste</span>
-  </div>
+
   <div class="flex flex-wrap">
     <app-artist-card *ngFor="let artist of artists" [artist]="artist" (click)="goToArtist(artist)"></app-artist-card>
   </div>

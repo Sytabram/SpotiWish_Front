@@ -17,6 +17,7 @@ export class SuggestComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.clear();
     this.nepalMusics = [
       {
         Id: 1,

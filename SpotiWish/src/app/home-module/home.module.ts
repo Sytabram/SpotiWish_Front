@@ -19,7 +19,7 @@ import { AlbumCardComponent } from './components/artist/album-card/album-card.co
 import { AlbumComponent } from './components/album/album.component';
 import { MusicCardComponent } from './components/album/music-card/music-card.component';
 import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
-import { PlayingBarSongComponent } from './components/home/playing-bar-song/playing-bar-song.component';
+import {PlayingBarSongComponent} from "./components/home/playing-bar-song/playing-bar-song.component";
 
 
 @NgModule({

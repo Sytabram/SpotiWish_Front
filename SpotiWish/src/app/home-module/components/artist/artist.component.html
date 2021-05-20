@@ -1,13 +1,4 @@
 <div class="h-full overflow-hidden" style="background-color: #282828">
-  <div class="flex">
-    <button class="mt-4 ml-7 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
-      <mat-icon class="text-white text-4xl">keyboard_arrow_left</mat-icon>
-    </button>
-    <button class="mt-4 ml-5 focus:outline-none" mat-mini-fab aria-label="Example icon-button with a arrow icon">
-      <mat-icon class="text-white text-4xl">keyboard_arrow_right</mat-icon>
-    </button>
-  </div>
-
 
 
   <div class="flex flex-col-reverse h-96 text-white">
@@ -15,7 +6,7 @@
     <span class="font-black text-6xl p-5">{{artist.Name}}</span>
   </div>
   <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
-    <span class="p-5 text-2xl font-black">Populaire</span>
+    <span class="p-5 text-2xl font-black">Albums</span>
     <div class="flex flex-col">
       <app-album-card *ngFor="let album of artist.Albums" [album]=album (click)="goToAlbum(album)"></app-album-card>
     </div>
