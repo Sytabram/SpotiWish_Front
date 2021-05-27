@@ -10,8 +10,8 @@
 
 
 
-  <div class="flex flex-col-reverse h-96 text-white">
-    <span class="text-2xl p-5">TEST}</span>
+  <div class="flex select-none flex-col-reverse h-96 text-white">
+    <span class="text-2xl p-5">TEST</span>
     <span class="font-black text-6xl p-5">TEST</span>
   </div>
   <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
@@ -21,14 +21,17 @@
       <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
         <div class="flex justify-between items-center">
           <div class="flex items-center justify-center">
-            <div class="ml-14 text-gray-400">TITLE</div>
+            <div class="ml-2 text-gray-400">TITLE</div>
           </div>
-          <p class="text-gray-400 mt-1">Nb. Plays</p>
+          <div class="flex items-center justify-center">
+            <div class="ml-10 text-gray-400">Nb. Plays</div>
+          </div>
           <p class="text-gray-400 mt-1">Release Date</p>
         </div>
       </div>
 
       <app-music-card *ngFor="let song of album.Musics" [song]="song" (click)="playThisSong(song)"></app-music-card>
+
     </div>
   </div>
 </div>

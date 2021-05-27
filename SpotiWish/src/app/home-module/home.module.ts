@@ -21,9 +21,10 @@ import { MusicCardComponent } from './components/album/music-card/music-card.com
 import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 import { PlayingBarSongComponent } from './components/home/playing-bar-song/playing-bar-song.component';
 import { LikedSongComponent } from './components/liked-song/liked-song.component';
+import { MyPlaylistComponent } from './components/my-playlist/my-playlist.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent],
+  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent, MyPlaylistComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
