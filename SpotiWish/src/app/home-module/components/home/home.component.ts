@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
+import {HomeService} from "../../services/home.service";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
   public href = ""
   public static playingSong: boolean = false;
 
-  constructor(private router: Router,) {
+  constructor(private router: Router, private _homeService: HomeService) {
     // subscribe to router navigation
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd){
@@ -21,11 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-
-  changePlayingSong(){
-    HomeComponent.playingSong = !HomeComponent.playingSong
   }
 
   getPlayingSongStatus(){

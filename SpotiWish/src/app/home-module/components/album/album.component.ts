@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeComponent} from "../home/home.component";
 
 @Component({
@@ -9,7 +9,8 @@ import {HomeComponent} from "../home/home.component";
 export class AlbumComponent implements OnInit {
   album: any
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.album = JSON.parse(localStorage.getItem("album"))
@@ -20,7 +21,10 @@ export class AlbumComponent implements OnInit {
     localStorage.removeItem("playingSong")
     let songStr = JSON.stringify(song);
     localStorage.setItem("playingSong", songStr);
-
     HomeComponent.playingSong = !HomeComponent.playingSong
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
