@@ -1,0 +1,87 @@
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+  <main class="overflow-x-hidden overflow-y-auto">
+    <div class="container mx-auto px-6 py-8">
+      <span class="text-gray-700 text-2xl font-medium">Gérer les Artistes</span>
+
+
+      <div class="flex justify-between items-center pt-10 py-3">
+        <div class="flex items-center">
+          <div class="relative mx-4 lg:mx-0">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                <mat-icon>search</mat-icon>
+              </span>
+            <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600" type="text" placeholder="Rechercher un artiste">
+          </div>
+        </div>
+        <a routerLink="/admin/artistes/edit-artiste" href=""><button class="bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
+          Ajouter un artiste
+        </button></a>
+      </div>
+
+
+      <div class="flex flex-col">
+        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+          <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+
+            <table class="min-w-full">
+              <thead>
+              <tr>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Nom
+                </th>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Nbr album/single
+                </th>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Nbr d'écoute
+                </th>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Albums
+                </th>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  Action
+                </th>
+              </tr>
+              </thead>
+
+              <tbody class="bg-white">
+              <tr>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-10 w-10 rounded-full"
+                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                    </div>
+
+                    <div class="ml-4">
+                      <div class="text-sm leading-5 font-medium text-gray-900">Lomepal</div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">3</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">100'562</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                  <a routerLink="/admin/artistes/albums" href="" class="text-indigo-600 hover:text-indigo-900">Page album/single</a>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900 pr-2"><mat-icon>delete</mat-icon></a>
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900 pl-2"><mat-icon>edit</mat-icon></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

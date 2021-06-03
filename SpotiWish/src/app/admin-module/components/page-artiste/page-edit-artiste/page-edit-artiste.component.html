@@ -1,0 +1,112 @@
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+  <div class="flex flex-col mt-16 mx-28">
+    <div class="bg-white shadow-md rounded-3xl p-5">
+      <div class="flex flex-col sm:flex-row items-center">
+        <h2 class="font-semibold text-lg mr-auto">Ajouter un artiste</h2>
+      </div>
+      <div class="mt-5">
+        <div class="form">
+
+          <div class="md:space-y-2 mb-3">
+            <label class="text-lg font-semibold text-gray-600 py-2">Photo de profil <abbr title="required">*</abbr></label>
+            <div class="flex items-center pt-2 pb-1">
+              <div class="w-14 h-14 mr-4 flex-none rounded-xl border overflow-hidden">
+                <img class="w-14 h-14 mr-4 object-cover"
+                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                     alt="Avatar Upload">
+              </div>
+              <label class="cursor-pointer ">
+                <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
+                <input type="file" class="hidden" :multiple="multiple" :accept="accept">
+              </label>
+            </div>
+          </div>
+
+          <div class="md:space-y-2 mb-3">
+            <label class="text-lg font-semibold text-gray-600 py-2">Photo de couverture <abbr title="required">*</abbr></label>
+            <div class="flex items-center pt-2 pb-6">
+              <div class="w-14 h-14 mr-4 flex-none rounded-xl border overflow-hidden">
+                <img class="w-14 h-14 mr-4 object-cover"
+                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                     alt="Avatar Upload">
+              </div>
+              <label class="cursor-pointer ">
+                <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
+                <input type="file" class="hidden" :multiple="multiple" :accept="accept">
+              </label>
+            </div>
+          </div>
+
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Name <abbr title="required">*</abbr></label>
+              <input placeholder="Name"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="username" id="username">
+              <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+            </div>
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Full Name</label>
+              <input placeholder="Full name"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="fullName" id="fullName">
+            </div>
+          </div>
+
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Début de carrière</label>
+              <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="date" name="startCarrier" id="startCarrier">
+            </div>
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Date de naissance</label>
+              <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="date" name="dateNaissance" id="dateNaissance">
+            </div>
+          </div>
+
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="w-full flex flex-col mb-3">
+              <label class="font-semibold text-gray-600 py-2">Sexe</label>
+              <select
+                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
+                required="required" name="integration[city_id]" id="role">
+                <option value="">Selected sexe</option>
+                <option value="">Femme</option>
+                <option value="">Homme</option>
+                <option value="">Autres</option>
+              </select>
+              <p class="text-sm text-red-500 hidden mt-3" id="error">Veuillez remplir ce champ.</p>
+            </div>
+            <div class="w-full flex flex-col mb-3">
+              <label class="font-semibold text-gray-600 py-2">Pays</label>
+              <select
+                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
+                required="required" name="integration[city_id]" id="abonnement">
+                <option value="">Selected pays</option>
+                <option value="">France</option>
+                <option value="">Suisse</option>
+                <option value="">Belgique</option>
+                <option value="">Angleterre</option>
+                <option value="">Etat-Unis</option>
+              </select>
+              <p class="text-sm text-red-500 hidden mt-3" id="error2">Veuillez remplir ce champ.</p>
+            </div>
+          </div>
+
+          <p class="text-xs text-red-500 text-right my-3">Les champs obligatoires sont marqués d'un astérisque <abbr title="Required field">*</abbr></p>
+
+          <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+            <a routerLink="/admin/users" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+              Cancel
+            </button></a>
+            <a routerLink="/admin/users" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+              Save
+            </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

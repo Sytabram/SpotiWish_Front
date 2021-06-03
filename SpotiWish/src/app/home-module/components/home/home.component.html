@@ -1,8 +1,10 @@
 <mat-drawer-container class="h-full">
   <mat-drawer mode="side" opened class="bg-black text-white w-64">
-    <div class="flex items-center justify-left ml-6 mt-10">
-      <img class="h-12 animate-spin" src="https://delight-data.com/wp-content/uploads/2019/10/spotify.svg">
-      <span class="mx-3 font-bold text-2xl text-white font-large">SpotiWish</span>
+    <div class="items-center justify-left ml-6 mt-10">
+      <a class="flex" [routerLink]="'/home'">
+          <img class="h-12 animate-spin" src="../../../../assets/images/spotify.svg">
+          <span class="mx-3 pt-2 select-none font-bold text-2xl text-white font-large">SpotiWish</span>
+      </a>
     </div>
 
     <!-- Profile Button -->
@@ -40,6 +42,13 @@
         <span class="mx-4 font-medium">Bibliothèque</span>
       </a>
 
+      <a [routerLink]="'/admin'"
+         class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
+         href="#">
+        <mat-icon>assignment_ind</mat-icon>
+        <span class="mx-4 font-medium">Admin</span>
+      </a>
+
       <a [routerLink]="'/home/createPlaylist'"
         class="flex items-center mt-8 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
         href="#">
@@ -58,10 +67,10 @@
         <img src="../../../../assets/divider.png">
       </div>
 
-      <a
+      <a [routerLink]="'/home/myPlaylist'"
         class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
         href="#">
-        <span class="font-small">Playlist 1</span>w
+        <span class="font-small">Playlist 1</span>
       </a>
     </nav>
 
