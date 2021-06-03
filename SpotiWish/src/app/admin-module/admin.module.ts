@@ -7,16 +7,23 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { PageUserComponent } from './components/page-user/page-user.component';
+import {MatIconModule} from '@angular/material/icon';
+import { PageAlbumComponent } from './components/page-artiste/page-album/page-album.component';
+import { PageEditUserComponent } from './components/page-user/page-edit-user/page-edit-user.component';
+import { PageEditArtisteComponent } from './components/page-artiste/page-edit-artiste/page-edit-artiste.component';
+import { PageEditAlbumComponent } from './components/page-artiste/page-album/page-edit-album/page-edit-album.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, PageArtisteComponent, SidebarComponent],
+  declarations: [AdminComponent, PageArtisteComponent, SidebarComponent, PageUserComponent, PageAlbumComponent, PageEditUserComponent, PageEditArtisteComponent, PageEditAlbumComponent],
   imports: [
     BrowserModule,
     CommonModule,
     AdminRoutingModule,
     MatSidenavModule,
     FormsModule,
+    MatIconModule,
   ]
 })
 export class AdminModule {

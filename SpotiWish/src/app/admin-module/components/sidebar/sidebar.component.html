@@ -1,18 +1,18 @@
-<div id="sidebar">
-  <nav class="flex flex-col bg-black w-64 h-screen px-4 tex-gray-900">
+<nav class="flex flex-col w-64 h-screen px-4 fixed" style="background-color: #1A202C">
 
-    <div class="flex flex-wrap mt-8">
-      <div class="w-1/2">
-        <img src="https://randomuser.me/api/portraits/women/27.jpg" class="mx-auto w-20 h-20 rounded-full"/>
-      </div>
-      <div class="w-1/2 pt-7">
-        <span class="font-semibold text-white ">Administrateur</span>
-      </div>
+  <div class="flex flex-wrap mt-8">
+    <div class="w-1/2">
+      <img src="https://randomuser.me/api/portraits/women/27.jpg" class="mx-auto w-20 h-20 rounded-full"/>
     </div>
+    <div class="w-1/2 pt-7">
+      <span class="font-semibold text-white ">Administrateur</span>
+    </div>
+  </div>
 
-    <div class="mt-10">
-      <ul>
-        <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+  <div class="mt-10">
+    <ul>
+      <a routerLink="/admin/artistes" href=""><li
+        class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
               <span>
                 <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
                   <path
@@ -22,12 +22,11 @@
                   ></path>
                 </svg>
               </span>
-          <a routerLink="/admin/artistes" href="">
-            <span class="ml-2">Artistes</span>
-          </a>
-        </li>
+          <span class="ml-2">Artistes</span>
+      </li></a>
 
-        <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+      <a routerLink="/admin/users" href=""><li
+        class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
               <span>
                 <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -40,12 +39,9 @@
                   />
                 </svg>
               </span>
-          <a href="#">
-            <span class="ml-2">Utilisateurs</span>
-          </a>
-        </li>
+          <span class="ml-2">Utilisateurs</span>
+      </li></a>
 
-      </ul>
-    </div>
-  </nav>
-</div>
+    </ul>
+  </div>
+</nav>
