@@ -23,7 +23,11 @@
     "@angular/router": "~11.2.11",
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.0",
+    "@vime/angular": "^5.0.31",
+    "cloud-player": "^5.1.1",
+    "io-player": "^1.0.5",
     "ng2-file-upload": "^1.4.0",
+    "ngx-audio-player": "^11.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

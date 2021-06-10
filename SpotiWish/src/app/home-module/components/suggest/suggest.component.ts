@@ -20,7 +20,7 @@ export class SuggestComponent implements OnInit {
     localStorage.clear();
     this.nepalMusics = [
       {
-        Id: 1,
+        Id: 3,
         Name: "Trajectoire",
         Author: 'Nepal',
         Thumbnail: null,

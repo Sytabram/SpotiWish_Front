@@ -1,5 +1,4 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {HomeComponent} from './components/home/home.component';
 import {HomeRoutingModule} from './home-routing.module';
 import {MatIconModule} from '@angular/material/icon';
@@ -22,6 +21,10 @@ import { CreatePlaylistComponent } from './components/create-playlist/create-pla
 import { PlayingBarSongComponent } from './components/home/playing-bar-song/playing-bar-song.component';
 import { LikedSongComponent } from './components/liked-song/liked-song.component';
 import { MyPlaylistComponent } from './components/my-playlist/my-playlist.component';
+import {IoPlayerModule} from "io-player";
+import {NgxAudioPlayerModule} from "ngx-audio-player";
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent, MyPlaylistComponent],
@@ -33,7 +36,9 @@ import { MyPlaylistComponent } from './components/my-playlist/my-playlist.compon
     FormsModule,
     MatDialogModule,
     MatCardModule,
-    MatSliderModule
+    MatSliderModule,
+    NgxAudioPlayerModule,
+    IoPlayerModule,
   ]
 })
 export class HomeModule {

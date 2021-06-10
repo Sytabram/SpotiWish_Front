@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import {MatSliderChange} from "@angular/material/slider";
+import {Track} from "ngx-audio-player";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-playing-bar-song',
@@ -11,15 +12,29 @@ export class PlayingBarSongComponent implements OnInit {
   paused: boolean = false;
 
   public audio = new Audio();
+
+// Material Style Advance Audio Player Playlist
+  msaapPlaylist: Track[];
+
   constructor() { }
 
   ngOnInit(): void {
     this.currentSong = JSON.parse(localStorage.getItem("playingSong"))
     console.log(this.currentSong)
-
+/*
     this.audio.src = "https://localhost:5001/Music/" + this.currentSong.Id + "/song";
     this.audio.load();
     this.audio.play()
+*/
+    // Material Style Advance Audio Player Playlist
+    this.msaapPlaylist = [
+      {
+        title: this.currentSong.Name,
+        link: "https://localhost:5001/Music/" + this.currentSong.Id + "/song",
+        artist: this.currentSong.Author,
+        duration: 100
+      }
+    ];
   }
 
   pauseSong() {
