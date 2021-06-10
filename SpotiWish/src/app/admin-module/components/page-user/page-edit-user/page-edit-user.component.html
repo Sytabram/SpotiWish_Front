@@ -58,6 +58,17 @@
 
           <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
             <div class="w-full flex flex-col mb-3">
+              <label class="font-semibold text-gray-600 py-2">Genre</label>
+              <select
+                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
+                required="required" name="integration[city_id]" id="genre">
+                <option value="">Sélectionné un genre</option>
+                <option value="">Homme</option>
+                <option value="">Femme</option>
+                <option value="">Autres</option>
+              </select>
+            </div>
+            <div class="w-full flex flex-col mb-3">
               <label class="font-semibold text-gray-600 py-2">Rôle <abbr title="required">*</abbr></label>
               <select
                 class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
@@ -65,17 +76,6 @@
                 <option value="">Sélectionné un rôle</option>
                 <option value="">User</option>
                 <option value="">Admin</option>
-              </select>
-              <p class="text-sm text-red-500 hidden mt-3" id="error">Veuillez remplir ce champ.</p>
-            </div>
-            <div class="w-full flex flex-col mb-3">
-              <label class="font-semibold text-gray-600 py-2">Type d'abonnement <abbr title="required">*</abbr></label>
-              <select
-                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
-                required="required" name="integration[city_id]" id="abonnement">
-                <option value="">Sélectionné un abonnement</option>
-                <option value="">Free</option>
-                <option value="">Premium</option>
               </select>
               <p class="text-sm text-red-500 hidden mt-3" id="error2">Veuillez remplir ce champ.</p>
             </div>

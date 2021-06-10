@@ -8,7 +8,8 @@
         <div class="form">
 
           <div class="md:space-y-2 mb-3">
-            <label class="text-lg font-semibold text-gray-600 py-2">Cover de l'album <abbr title="required">*</abbr></label>
+            <label class="text-lg font-semibold text-gray-600 py-2">Cover de l'album <abbr
+              title="required">*</abbr></label>
             <div class="flex items-center pt-2 pb-1">
               <div class="w-14 h-14 mr-4 flex-none rounded-xl border overflow-hidden">
                 <img class="w-14 h-14 mr-4 object-cover"
@@ -16,17 +17,9 @@
                      alt="Avatar Upload">
               </div>
               <label class="cursor-pointer ">
-                <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
+                <span
+                  class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
                 <input type="file" class="hidden" :accept="accept">
-              </label>
-            </div>
-          </div>
-
-          <div class="md:space-y-2 mb-3">
-            <label class="text-lg font-semibold text-gray-600 py-2">Sons <abbr title="required">*</abbr></label>
-            <div class="flex items-center pt-2 pb-1">
-              <label class="cursor-pointer ">
-                <input type="file" multiple="multiple" accept=".mp3">
               </label>
             </div>
           </div>
@@ -51,8 +44,9 @@
           <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Date de sortie <abbr title="required">*</abbr></label>
-              <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                     required="required" type="date" name="startCarrier" id="startCarrier">
+              <input
+                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                required="required" type="date" name="startCarrier" id="startCarrier">
             </div>
 
             <div class="w-full flex flex-col mb-3">
@@ -65,20 +59,73 @@
                 <option value="">Album</option>
                 <option value="">EP</option>
               </select>
-              <p class="text-sm text-red-500 hidden mt-3" id="error">Veuillez remplir ce champ.</p>
+              <p class="text-sm text-red-500 hidden mt-3">Veuillez remplir ce champ.</p>
             </div>
           </div>
 
-          <p class="text-xs text-red-500 text-right my-3">Les champs obligatoires sont marqués d'un astérisque <abbr title="Required field">*</abbr></p>
+          <p class="text-xs text-red-500 text-right my-3">Les champs obligatoires sont marqués d'un astérisque <abbr
+            title="Required field">*</abbr></p>
 
-          <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-            <a routerLink="/admin/artistes/albums" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
-              Annuler
-            </button></a>
-            <a routerLink="/admin/artistes/albums" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
-              Ajouter
-            </button></a>
+          <div class="mt-5 mb-12 text-right md:space-x-3 md:block flex flex-col-reverse">
+            <a routerLink="/admin/artistes/albums" href="">
+              <button
+                class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                Annuler
+              </button>
+            </a>
+            <a routerLink="/admin/artistes/albums" href="">
+              <button
+                class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+                Ajouter
+              </button>
+            </a>
           </div>
+
+
+          <div class="md:space-y-2 mb-3">
+            <label class="text-lg font-semibold text-gray-600 py-2">Ajouter un/des sons <abbr title="required">*</abbr></label>
+          </div>
+
+          <div class="flex items-center mb-10 pb-5 border-b-2 border-black">
+            <div class="flex justify-between space-x-5">
+              <div class="">
+                <input placeholder="Titre du son"
+                       class="appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                       required="required" type="text" name="title" id="title">
+                <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+              </div>
+              <div class="">
+                <select class="bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 w-72"
+                        required="required" name="integration[city_id]" id="style">
+                  <option value="">Sélectionné un style de musique</option>
+                  <option value="">Rock</option>
+                  <option value="">Country</option>
+                  <option value="">Rap français</option>
+                  <option value="">Métal</option>
+                  <option value="">Chanson française</option>
+                  <option value="">Pop</option>
+                  <option value="">Rap US</option>
+                </select>
+                <p class="text-sm text-red-500 hidden mt-3">Veuillez remplir ce champ.</p>
+              </div>
+              <div class="pt-2 pb-1">
+                <label class="">
+                  <input class="cursor-pointer" type="file" accept=".mp3">
+                </label>
+              </div>
+            </div>
+            <div class="flex w-full justify-end">
+              <div class="">
+                <a routerLink="/admin/artistes/albums" href="">
+                  <button
+                    class="focus:outline-none bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+                    Ajouter le son
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <app-card-music></app-card-music>
         </div>
       </div>
     </div>

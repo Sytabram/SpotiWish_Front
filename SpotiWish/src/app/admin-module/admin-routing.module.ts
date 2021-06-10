@@ -19,8 +19,11 @@ const routes: Routes = [
       { path: 'users', component: PageUserComponent},
       { path: 'artistes/albums', component: PageAlbumComponent},
       { path: 'users/edit-user', component: PageEditUserComponent},
+      { path: 'users/add-user', component: PageEditUserComponent},
       { path: 'artistes/edit-artiste', component: PageEditArtisteComponent},
+      { path: 'artistes/add-artiste', component: PageEditArtisteComponent},
       { path: 'artistes/albums/edit-album', component: PageEditAlbumComponent},
+      { path: 'artistes/albums/add-album', component: PageEditAlbumComponent},
     ]
   }
 ];
