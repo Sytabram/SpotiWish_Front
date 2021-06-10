@@ -6,9 +6,10 @@ import {HomeModule} from './home-module/home.module';
 import {AdminModule} from './admin-module/admin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {IoPlayerModule} from "io-player";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgxAudioPlayerModule} from "ngx-audio-player";
 import {NgModule} from "@angular/core";
+import {TokenInterceptor} from "./interceptor/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,13 @@ import {NgModule} from "@angular/core";
     NgxAudioPlayerModule,
     IoPlayerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

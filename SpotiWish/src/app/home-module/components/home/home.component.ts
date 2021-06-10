@@ -12,20 +12,9 @@ export class HomeComponent implements OnInit {
   public static playingSong: boolean = false;
 
   constructor(private router: Router, private _homeService: HomeService) {
-    // subscribe to router navigation
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd){
-        this.href = this.router.url;
-        console.log(this.href)
-      }
-    });
   }
 
   ngOnInit(): void {
-  }
-
-  getPlayingSongStatus(){
-    return HomeComponent.playingSong
   }
 
 }

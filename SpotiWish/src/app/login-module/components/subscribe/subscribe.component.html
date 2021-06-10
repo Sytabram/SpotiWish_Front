@@ -1,9 +1,9 @@
 <!-- component -->
 <div class="min-h-screen py-6 flex flex-col justify-center">
   <div class="bg fixed w-full h-full bg-cover filter blur" style="transform: scale(1.2,1.2)"></div>
-  <div class="flex space-x-4 px-4 justify-around">
+  <div class="flex px-4 justify-center">
     <!-- CARD -->
-    <div class="font-semibold h-auto w-1/4 rounded-xl shadow-2xl flex flex-wrap justify-center items-center py-5"
+    <div *ngIf="!payment" class="font-semibold h-auto w-1/4 rounded-xl shadow-2xl flex flex-wrap justify-center items-center py-5"
          style="background-color: #121212">
 
       <!-- TEXTS -->
@@ -21,7 +21,7 @@
            class="border-b-2 border-red-500 hover:border-red-600 text-sm text-white uppercase cursor-pointer">s'inscrire</a>
       </div>
 
-      <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="subscribeForm" (ngSubmit)="onSubmitInfo()">
         <div class="mt-10">
           <input formControlName="emailC" [(ngModel)]="email"
                  class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="email" placeholder="Email"
@@ -68,6 +68,84 @@
         </div>
         <div class="select-none flex justify-center mb-10">
           <a class="text-red-500 hover:text-red-600 cursor-pointer" (click)="onReset()" routerLink="/login">Annuler</a>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="payment" class="h-auto w-1/4 rounded-xl shadow-2xl flex flex-wrap justify-center items-center py-5"
+         style="background-color: #121212">
+
+      <!-- Credit Card -->
+      <div class="flex flex-col h-52 w-full mx-8 bg-gradient-to-tr from-red-600 to-purple-clair rounded-xl text-white">
+        <div class="flex items-center justify-between h-1/3 mt-3">
+          <div class="flex flex-col">
+            <span class="ml-8">Name.</span>
+            <span class="ml-8 font-semibold tracking-widest">{{name}}</span>
+          </div>
+          <div>
+            <img class="mr-8 w-14 h-14" src="https://i.imgur.com/bbPHJVe.png"/>
+          </div>
+        </div>
+        <div class="flex items-center justify-between h-1/3">
+          <div class="flex flex-col">
+            <span class="ml-8">Card Number.</span>
+            <span class="ml-8 font-semibold tracking-widest">{{cardNumber}}</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between h-1/3 mb-3">
+          <div class="flex flex-col">
+            <span class="ml-8">Expiry.</span>
+            <span class="ml-8 font-semibold tracking-widest">{{dateExpire}}</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="mr-8">CVC.</span>
+            <span class="mr-8 font-semibold tracking-widest">{{CVC}}</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="font-semibold" [formGroup]="subscribeFormCreditCard" (ngSubmit)="onSubmitCard()">
+        <div class="mt-10">
+          <input formControlName="nameC" [(ngModel)]="name"
+                 class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="text" placeholder="Full name"
+                 [ngClass]="{ 'is-invalid': submitted && fCard.nameC.errors }"/>
+          <div *ngIf="submitted && fCard.nameC.errors" class="text-red-600">
+            <div *ngIf="fCard.nameC.errors.required">Full name is required</div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <input formControlName="cardNumberC" [(ngModel)]="cardNumber"
+                 class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="text" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                 [ngClass]="{ 'is-invalid': submitted && fCard.cardNumberC.errors }"/>
+          <div *ngIf="submitted && fCard.cardNumberC.errors" class="text-red-600">
+            <div *ngIf="fCard.cardNumberC.errors.required">Card number is required</div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <input formControlName="dateExpireC" [(ngModel)]="dateExpire"
+                 class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="month"
+                 placeholder="Expire date"
+                 [ngClass]="{ 'is-invalid': submitted && fCard.dateExpireC.errors }"/>
+          <div *ngIf="submitted && fCard.dateExpireC.errors" class="text-red-600">
+            <div *ngIf="fCard.dateExpireC.errors.required">Expire date is required</div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <input formControlName="CVCC" [(ngModel)]="CVC"
+                 class="font-semibold rounded-full px-4 py-2 w-80 focus:outline-none" type="text" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                 placeholder="CVC"
+                 [ngClass]="{ 'is-invalid': submitted && fCard.CVCC.errors }"/>
+          <div *ngIf="submitted && fCard.CVCC.errors" class="text-red-600">
+            <div *ngIf="fCard.CVCC.errors.required">CVC is required</div>
+          </div>
+        </div>
+        <div class="mt-10 mb-10 select-none">
+          <button
+            class="font-semibold uppercase text-white w-80 h-16 bg-red-500 hover:bg-red-600 rounded-full shadow-2xl focus:outline-none">
+            Valider
+          </button>
+        </div>
+        <div class="select-none flex justify-center mb-10">
+          <a class="text-red-500 hover:text-red-600 cursor-pointer" (click)="onResetCard()" routerLink="/login">Annuler</a>
         </div>
       </form>
     </div>

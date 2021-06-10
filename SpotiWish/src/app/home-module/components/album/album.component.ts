@@ -7,13 +7,14 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
-  album: any
+  album: any;
+  coverURL: any;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.album = JSON.parse(localStorage.getItem("album"))
+    this.coverURL = "https://localhost:5001/Album/" + this.album.id + "/thumbnail";
     console.log(this.album)
   }
 

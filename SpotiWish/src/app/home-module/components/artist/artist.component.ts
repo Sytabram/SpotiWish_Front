@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./artist.component.css']
 })
 export class ArtistComponent implements OnInit {
+  coverURL: any;
 
   artist: any
 
@@ -14,6 +15,7 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit(): void {
     this.artist = JSON.parse(localStorage.getItem("artist"))
+    this.coverURL = "https://localhost:5001/Artist/" + this.artist.id + "/backThumbnail";
   }
 
   goToAlbum(album: any) {
