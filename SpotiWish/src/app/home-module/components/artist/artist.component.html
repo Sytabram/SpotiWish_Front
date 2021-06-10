@@ -1,15 +1,23 @@
-<div class="ml-64 h-screen overflow-hidden" style="background-color: #282828">
+<div class="ml-64 h-screen overflow-hidden">
 
 
-  <div class="flex flex-col-reverse h-96 text-white">
-    <span class="text-2xl p-5">{{artist.TimeOfHeard}}</span>
-    <span class="font-black text-6xl p-5">{{artist.Name}}</span>
+  <div class="bg-cover" [ngStyle]="{'background-image': 'url(' + coverURL + ')'}">
+
+    <div class="flex flex-col-reverse h-96 text-white z-30">
+      <span class="text-2xl p-5">{{artist.timeOfHeard}}</span>
+      <span class="font-black text-6xl p-5">{{artist.name}}</span>
+    </div>
   </div>
+
+
+
   <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
     <span class="p-5 text-2xl font-black">Albums</span>
     <div class="flex flex-col">
-      <app-album-card *ngFor="let album of artist.Albums" [album]=album (click)="goToAlbum(album)"></app-album-card>
+      <app-album-card *ngFor="let album of artist.albums" [album]=album (click)="goToAlbum(album)"></app-album-card>
     </div>
   </div>
+
+
 </div>
 

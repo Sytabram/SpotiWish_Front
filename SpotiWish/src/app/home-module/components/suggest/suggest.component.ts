@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Artist} from "../../../models/artist";
 import {Album} from "../../../models/album";
 import {Music} from "../../../models/music";
+import {ArtistsService} from "../../services/artists.service";
 
 @Component({
   selector: 'app-suggest',
@@ -10,11 +10,11 @@ import {Music} from "../../../models/music";
   styleUrls: ['./suggest.component.css']
 })
 export class SuggestComponent implements OnInit {
-  artists: Artist[];
+  artists: any;
   nepalAlbum: Album[];
   nepalMusics: Music[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _artistService: ArtistsService) { }
 
   ngOnInit(): void {
     localStorage.clear();
@@ -91,6 +91,13 @@ export class SuggestComponent implements OnInit {
   }
 
   private getArtists() {
-
-  }
+    this._artistService.getArtists().subscribe(
+      data => {
+        if (data) {
+          console.log("Artists: ", data);
+          this.artists = data;
+        }
+      },
+      error => { }
+    );  }
 }
