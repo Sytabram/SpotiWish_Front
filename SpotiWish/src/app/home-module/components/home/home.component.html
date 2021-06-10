@@ -1,26 +1,26 @@
-<mat-drawer-container class="h-full">
+<!--<mat-drawer-container class="h-full">
   <mat-drawer mode="side" opened class="bg-black text-white w-64">
     <div class="items-center justify-left ml-6 mt-10">
       <a class="flex" [routerLink]="'/home'">
-          <img class="h-12 animate-spin" src="../../../../assets/images/spotify.svg">
-          <span class="mx-3 pt-2 select-none font-bold text-2xl text-white font-large">SpotiWish</span>
+        <img class="h-12 animate-spin" src="../../../../assets/images/spotify.svg">
+        <span class="mx-3 pt-2 select-none font-bold text-2xl text-white font-large">SpotiWish</span>
       </a>
     </div>
 
-    <!-- Profile Button -->
+    &lt;!&ndash; Profile Button &ndash;&gt;
     <div
       class="usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
       USERNAME
     </div>
 
-    <!-- Logout Button -->
+    &lt;!&ndash; Logout Button &ndash;&gt;
     <div [routerLink]="'/login'"
          class="usernameButton cursor-pointer top-15 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
       LOGOUT
     </div>
 
 
-    <!-- All navigation button -->
+    &lt;!&ndash; All navigation button &ndash;&gt;
     <nav class="mt-10">
       <a [routerLink]="'/home'" class="flex items-center py-2 px-8 bg-gray-700 text-gray-100 border-r-4 border-gray-100"
          href="#">
@@ -50,15 +50,15 @@
       </a>
 
       <a [routerLink]="'/home/createPlaylist'"
-        class="flex items-center mt-8 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
-        href="#">
+         class="flex items-center mt-8 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
+         href="#">
         <mat-icon>add_box</mat-icon>
         <span class="mx-4 font-medium">Créer une playlist</span>
       </a>
 
       <a [routerLink]="'/home/likedSong'"
-        class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
-        href="#">
+         class="flex items-center mt-1 py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
+         href="#">
         <mat-icon>favorite</mat-icon>
         <span class="mx-4 font-medium">Titres likés</span>
       </a>
@@ -68,17 +68,28 @@
       </div>
 
       <a [routerLink]="'/home/myPlaylist'"
-        class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
-        href="#">
+         class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100 hover:border-gray-100"
+         href="#">
         <span class="font-small">Playlist 1</span>
       </a>
     </nav>
 
-    <!-- Playing Song Bar -->
+    &lt;!&ndash; Playing Song Bar &ndash;&gt;
     <app-playing-bar-song *ngIf="getPlayingSongStatus()"></app-playing-bar-song>
 
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container>-->
+
+
+<div id="page">
+  <div id="menu">
+    <app-sidebar-home></app-sidebar-home>
+  </div>
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

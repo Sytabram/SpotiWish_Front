@@ -25,9 +25,10 @@ import {IoPlayerModule} from "io-player";
 import {NgxAudioPlayerModule} from "ngx-audio-player";
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import { SidebarHomeComponent } from './components/sidebar-home/sidebar-home.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent, MyPlaylistComponent],
+  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent, MyPlaylistComponent, SidebarHomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

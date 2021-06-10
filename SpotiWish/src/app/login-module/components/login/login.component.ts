@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login.service";
 import {MustMatch} from "../subscribe/helper/must-match.validator";
 import {Router} from "@angular/router";
+import {timer} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   loginForm: FormGroup;
+  isWrongCredentials = false;
 
   constructor(private _loginService: LoginService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -32,16 +34,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    this._loginService.loginUser(this.username, this.password).subscribe(
-      data => {
-        if (data) {
-          console.log(data)
-          this.router.navigateByUrl('/home')
-        }
-      },
-      error => {
+    this._loginService.loginUser(this.username, this.password)
+    timer(300).subscribe(x =>
+    {
+      if (this._loginService.isAuthenticated)
+      {
+        this.router.navigate(['portal']);
+      } else
+      {
+        this.isWrongCredentials = true;
       }
-    );
+    });
   }
 
 

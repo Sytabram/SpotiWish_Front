@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MustMatch} from "./helper/must-match.validator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-subscribe',
@@ -14,11 +15,19 @@ export class SubscribeComponent implements OnInit {
   password: any;
   passwordConfirm: any;
 
+  name: any;
+  cardNumber: any;
+  dateExpire: any;
+  CVC: any;
+
   submitted = false;
 
   subscribeForm: FormGroup;
+  subscribeFormCreditCard: FormGroup;
 
-  constructor(private _loginService: LoginService, private formBuilder: FormBuilder) {
+  payment = false;
+
+  constructor(private _loginService: LoginService, private formBuilder: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,7 +38,13 @@ export class SubscribeComponent implements OnInit {
       passwordConfirmC: ['', [Validators.required]]
     }, {
       validator: MustMatch('passwordC', 'passwordConfirmC')
-    })
+    });
+    this.subscribeFormCreditCard = this.formBuilder.group({
+      nameC: ['', [Validators.required]],
+      cardNumberC: ['', [Validators.required]],
+      dateExpireC: ['', [Validators.required]],
+      CVCC: ['', [Validators.required]]
+    });
   }
 
   subscribe() {
@@ -37,6 +52,7 @@ export class SubscribeComponent implements OnInit {
       data => {
         if (data) {
           console.log(data)
+          this.router.navigateByUrl('/login')
         }
       },
       error => {
@@ -49,8 +65,23 @@ export class SubscribeComponent implements OnInit {
     return this.subscribeForm.controls;
   }
 
+  get fCard(){
+    return this.subscribeFormCreditCard.controls;
+  }
 
-  onSubmit() {
+  onSubmitCard() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.subscribeFormCreditCard.invalid) {
+      return;
+    }
+
+    // display form values on success
+    this.subscribe()
+  }
+
+  onSubmitInfo() {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -59,11 +90,18 @@ export class SubscribeComponent implements OnInit {
     }
 
     // display form values on success
-    this.subscribe()
+    this.payment = true;
+    this.submitted = false;
   }
 
   onReset() {
     this.submitted = false;
     this.subscribeForm.reset();
+  }
+
+  onResetCard() {
+    this.submitted = false;
+    this.subscribeFormCreditCard.reset();
+    this.payment = false;
   }
 }

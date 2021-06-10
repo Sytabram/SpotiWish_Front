@@ -10,11 +10,12 @@ import {AlbumComponent} from "./components/album/album.component";
 import {CreatePlaylistComponent} from './components/create-playlist/create-playlist.component';
 import {LikedSongComponent} from './components/liked-song/liked-song.component';
 import {MyPlaylistComponent} from './components/my-playlist/my-playlist.component';
+import {AuthGuard} from "../guard/auth.guard";
 
 const routes: Routes = [
   {
     path: 'home',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     component: HomeComponent,
     children: [
       { path: '', redirectTo: "suggest", pathMatch: 'full'},

@@ -80,6 +80,7 @@ export class SuggestComponent implements OnInit {
         TimeOfHeard: 2314324
       },
     ]
+    this.getArtists()
   }
 
   goToArtist(artist: any) {
@@ -89,4 +90,7 @@ export class SuggestComponent implements OnInit {
     this.router.navigateByUrl('/home/artist')
   }
 
+  private getArtists() {
+
+  }
 }
