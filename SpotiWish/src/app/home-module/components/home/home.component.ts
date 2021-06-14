@@ -11,10 +11,15 @@ export class HomeComponent implements OnInit {
   public href = ""
   public static playingSong: boolean = false;
 
+  public static subscribed = false
+
   constructor(private router: Router, private _homeService: HomeService) {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem("token")){
+      HomeComponent.subscribed = true;
+    }
   }
 
 }

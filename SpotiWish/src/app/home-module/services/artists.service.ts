@@ -9,7 +9,12 @@ export class ArtistsService {
 
   constructor(private http: HttpClient) { }
 
-  getArtists() {
+  getAllArtists() {
     return this.http.get(this.url + "/Artist")
   }
+
+  getArtistById(id) {
+    return this.http.get(this.url + "/Artist/" + id)
+  }
+
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {Artist} from "../../../models/artist";
+import {ArtistsService} from "../../services/artists.service";
+import {timer} from "rxjs";
 
 @Component({
   selector: 'app-artist',
@@ -8,21 +11,28 @@ import {Router} from "@angular/router";
 })
 export class ArtistComponent implements OnInit {
   coverURL: any;
-
   artist: any
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _artistService: ArtistsService) { }
 
   ngOnInit(): void {
-    this.artist = JSON.parse(localStorage.getItem("artist"))
-    this.coverURL = "https://localhost:5001/Artist/" + this.artist.id + "/backThumbnail";
+    this.getArtist();
   }
 
-  goToAlbum(album: any) {
-    let albumStr = JSON.stringify(album);
-    localStorage.setItem("album", albumStr);
-
-    this.router.navigateByUrl('/home/album')
+  private getArtist() {
+    this._artistService.getArtistById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
+      data => {
+        if (data) {
+          console.log("Artist: ", data);
+          this.artist = data;
+        }
+        this.getCoverURL(this.artist.id)
+      },
+      error => { }
+    );
   }
 
+  private getCoverURL(id) {
+    this.coverURL = "https://localhost:5001/Artist/" + id + "/backThumbnail";
+  }
 }

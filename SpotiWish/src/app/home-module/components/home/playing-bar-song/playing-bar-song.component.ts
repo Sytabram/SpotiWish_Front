@@ -1,6 +1,7 @@
 import {MatSliderChange} from "@angular/material/slider";
 import {Track} from "ngx-audio-player";
 import {Component, OnInit} from "@angular/core";
+import {MusicService} from "../../../services/music.service";
 
 @Component({
   selector: 'app-playing-bar-song',
@@ -13,28 +14,24 @@ export class PlayingBarSongComponent implements OnInit {
 
   public audio = new Audio();
 
-// Material Style Advance Audio Player Playlist
-  msaapPlaylist: Track[];
-
-  constructor() { }
+  constructor(private _musicService: MusicService) { }
 
   ngOnInit(): void {
-    this.currentSong = JSON.parse(localStorage.getItem("playingSong"))
-    console.log(this.currentSong)
-/*
-    this.audio.src = "https://localhost:5001/Music/" + this.currentSong.Id + "/song";
-    this.audio.load();
-    this.audio.play()
-*/
-    // Material Style Advance Audio Player Playlist
-    this.msaapPlaylist = [
-      {
-        title: this.currentSong.Name,
-        link: "https://localhost:5001/Music/" + this.currentSong.Id + "/song",
-        artist: this.currentSong.Author,
-        duration: 100
-      }
-    ];
+    this.getMusicById();
+  }
+
+  private getMusicById(){
+    this._musicService.getMusicById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
+      data => {
+        if (data) {
+          this.currentSong = data;
+          console.log("Music: ", data);
+        }
+        this.audio.src = "https://localhost:5001/Music/" + this.currentSong.id + "/song";
+        this.audio.play();
+      },
+      error => { }
+    );
   }
 
   pauseSong() {
@@ -55,9 +52,5 @@ export class PlayingBarSongComponent implements OnInit {
   onCurrentTimeChange(event: any) {
     console.log("Current time: ", event.value)
     this.audio.currentTime = event.value
-  }
-
-  setCurrentTime(){
-    this.audio.currentTime = 10;
   }
 }
