@@ -19,7 +19,6 @@ import { AlbumComponent } from './components/album/album.component';
 import { MusicCardComponent } from './components/album/music-card/music-card.component';
 import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 import { PlayingBarSongComponent } from './components/home/playing-bar-song/playing-bar-song.component';
-import { LikedSongComponent } from './components/liked-song/liked-song.component';
 import { MyPlaylistComponent } from './components/my-playlist/my-playlist.component';
 import {IoPlayerModule} from "io-player";
 import {NgxAudioPlayerModule} from "ngx-audio-player";
@@ -28,7 +27,7 @@ import {CommonModule} from "@angular/common";
 import { SidebarHomeComponent } from './components/sidebar-home/sidebar-home.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, LikedSongComponent, MyPlaylistComponent, SidebarHomeComponent],
+  declarations: [HomeComponent, SearchComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CardGenreComponent, CardPlaylistComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, MyPlaylistComponent, SidebarHomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

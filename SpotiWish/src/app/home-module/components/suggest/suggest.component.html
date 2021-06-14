@@ -1,7 +1,14 @@
-<div class="ml-64 h-screen" style="background-color: #121212">
+<div *ngIf="getIfSubscribed()" class="ml-64 h-screen" style="background-color: #121212">
 
   <div class="flex flex-wrap">
-    <app-artist-card *ngFor="let artist of artists" [artist]="artist" (click)="goToArtist(artist)"></app-artist-card>
+    <app-artist-card *ngFor="let artist of artists" [artist]="artist" [routerLink]="'/home/artist/' + artist.id" ></app-artist-card>
+  </div>
+</div>
+
+
+<div *ngIf="!getIfSubscribed()" class="ml-64 h-screen" style="background-color: #121212">
+  <div class="flex flex-wrap">
+    <p class="text-white">NOT SUBSCRIBED</p>
   </div>
 </div>
 

@@ -26,6 +26,7 @@
     "@vime/angular": "^5.0.31",
     "cloud-player": "^5.1.1",
     "io-player": "^1.0.5",
+    "jwt-decode": "^3.1.2",
     "ng2-file-upload": "^1.4.0",
     "ngx-audio-player": "^11.0.4",
     "rxjs": "~6.6.0",

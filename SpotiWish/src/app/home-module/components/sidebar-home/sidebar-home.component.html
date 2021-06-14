@@ -20,7 +20,7 @@
         </li>
       </a>
 
-      <a [routerLink]="'/home/search'">
+      <a *ngIf="getIfSubscribed()" [routerLink]="'/home/search'">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>search</mat-icon>
@@ -28,7 +28,7 @@
         </li>
       </a>
 
-      <a [routerLink]="'/home/playlist'">
+      <a *ngIf="getIfSubscribed()" [routerLink]="'/home/playlist'">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>library_music</mat-icon>
@@ -36,7 +36,7 @@
         </li>
       </a>
 
-      <a [routerLink]="'/home/admin'">
+      <a *ngIf="getIfSubscribed()" [routerLink]="'/admin'">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>assignment_ind</mat-icon>
@@ -44,7 +44,7 @@
         </li>
       </a>
 
-      <a [routerLink]="'/home/createPlaylist'">
+      <a *ngIf="getIfSubscribed()" [routerLink]="'/home/createPlaylist'">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>add_box</mat-icon>
@@ -52,10 +52,10 @@
         </li>
       </a>
     </ul>
-    <div class="flex items-center py-2 px-8">
+    <div *ngIf="getIfSubscribed()" class="flex items-center py-2 px-8">
       <img src="../../../../assets/divider.png">
     </div>
-    <a [routerLink]="'/home/myPlaylist'"
+    <a *ngIf="getIfSubscribed()" [routerLink]="'/home/myPlaylist'"
        class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100"
        href="#">
       <span class="font-small">Playlist 1</span>
@@ -65,17 +65,30 @@
 
 
 
-<!-- Profile Button -->
-<div
-  class="text-white usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
-  USERNAME
+<!-- Subscribed Area -->
+<div *ngIf="getIfSubscribed()">
+  <!-- Profile Button -->
+  <div
+    class="text-white usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
+    {{tokenInfo.unique_name}}
+  </div>
+
+  <!-- Logout Button -->
+  <div (click)="logout()"
+       class="text-white usernameButton cursor-pointer top-20 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
+    LOGOUT
+  </div>
 </div>
 
-<!-- Logout Button -->
-<div [routerLink]="'/login'"
-     class="text-white usernameButton cursor-pointer top-20 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
-  LOGOUT
+<!-- Not Subscribed Area -->
+<div *ngIf="!getIfSubscribed()">
+  <!-- Leave Button -->
+  <div [routerLink]="'/login'"
+    class="text-white usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
+    Leave
+  </div>
 </div>
+
 
 <!-- Playing Song Bar -->
 <app-playing-bar-song *ngIf="getPlayingSongStatus()"></app-playing-bar-song>

@@ -1,5 +1,6 @@
 import {HomeComponent} from "../home/home.component";
 import {Component, OnInit} from "@angular/core";
+import {AlbumService} from "../../services/album.service";
 
 @Component({
   selector: 'app-album',
@@ -9,19 +10,32 @@ import {Component, OnInit} from "@angular/core";
 export class AlbumComponent implements OnInit {
   album: any;
   coverURL: any;
+  musics: any;
 
-  constructor() { }
+  constructor(private _albumService: AlbumService) { }
 
   ngOnInit(): void {
-    this.album = JSON.parse(localStorage.getItem("album"))
-    this.coverURL = "https://localhost:5001/Album/" + this.album.id + "/thumbnail";
-    console.log(this.album)
+    this.getAlbum();
   }
 
-  playThisSong(song: any) {
-    localStorage.removeItem("playingSong")
-    let songStr = JSON.stringify(song);
-    localStorage.setItem("playingSong", songStr);
+  private getAlbum() {
+    this._albumService.getAlbumById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
+      data => {
+        if (data) {
+          console.log("Album: ", data);
+          this.album = data;
+        }
+        this.getCoverURL(this.album.id)
+      },
+      error => { }
+    );
+  }
+
+  private getCoverURL(id) {
+    this.coverURL = "https://localhost:5001/Album/" +id + "/thumbnail";
+  }
+
+  playThisSong() {
     HomeComponent.playingSong = !HomeComponent.playingSong
   }
 
