@@ -1,6 +1,7 @@
 import {HomeComponent} from "../home/home.component";
 import {Component, OnInit} from "@angular/core";
 import {AlbumService} from "../../services/album.service";
+import {PlayingBarSongComponent} from "../home/playing-bar-song/playing-bar-song.component";
 
 @Component({
   selector: 'app-album',
@@ -35,7 +36,8 @@ export class AlbumComponent implements OnInit {
     this.coverURL = "https://localhost:5001/Album/" +id + "/thumbnail";
   }
 
-  playThisSong() {
+  playThisSong(id) {
+    PlayingBarSongComponent.id = id;
     HomeComponent.playingSong = !HomeComponent.playingSong
   }
 
