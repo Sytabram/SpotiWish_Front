@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../../models/user';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-page-edit-user',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageEditUserComponent implements OnInit {
 
-  constructor() { }
+  user = {} as User;
+
+  constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
   }
+
+  onSaveUser(user: User): void
+  {
+    this._userService.addUser(user).subscribe(
+      data =>
+      {
+        this.user = {} as User;
+        window.location.reload();
+      },
+      error =>
+      {}
+    );
+  }
+
+  saveUser():void{
+    this.onSaveUser(this.user);
+  }
+
+
 
 }

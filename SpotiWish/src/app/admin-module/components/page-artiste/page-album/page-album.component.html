@@ -1,7 +1,7 @@
-<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+<div class="ml-64 h-screen bg-gray-200 flex flex-col select-none overflow-hidden">
   <main class="overflow-x-hidden overflow-y-auto">
     <div class="container mx-auto px-6 py-8">
-      <span class="text-gray-700 text-2xl font-medium">Gérer les Albums de ...</span>
+      <span class="text-gray-700 text-2xl font-medium">Gérer les Albums de {{artist.name}}</span>
 
 
       <div class="flex justify-between items-center pt-10 py-3">
@@ -13,7 +13,7 @@
             <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600" type="text" placeholder="Rechercher un album">
           </div>
         </div>
-        <a routerLink="/admin/artistes/albums/add-album" href=""><button class="bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
+        <a routerLink="/admin/artistes/albums/add-album" href=""><button class="focus:outline-none bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
           Ajouter un album
         </button></a>
       </div>
@@ -45,33 +45,39 @@
               </thead>
 
               <tbody class="bg-white">
-              <tr>
+              <tr *ngFor="let albums of album">
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img class="h-10 w-10 rounded-full"
-                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                           src="https://localhost:5001/Album/{{albums.id}}/thumbnail" onerror="this.src='assets/images/not_image.jpg'" alt="alternative">
                     </div>
 
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">Jeannine</div>
+                      <div class="text-sm leading-5 font-medium text-gray-900">{{albums.name}}</div>
                     </div>
                   </div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900">16</div>
+                  <div class="text-sm leading-5 text-gray-900"></div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900">2019</div>
+                  <div class="text-sm leading-5 text-gray-900">{{albums.yearReleased}}</div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900">01h45</div>
+                  <div class="text-sm leading-5 text-gray-900">{{albums.timeOfHeard}}</div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                  <label class="cursor-pointer text-indigo-600 hover:text-indigo-900 pr-6">
+                    <span title="Ajouter/Modifier une image de couverture">
+                      <mat-icon>add_photo_alternate</mat-icon>
+                      <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg">
+                    </span>
+                  </label>
                   <a href="" class="text-indigo-600 hover:text-indigo-900 pr-2"><mat-icon>delete</mat-icon></a>
                   <a routerLink="/admin/artistes/albums/edit-album" href="" class="text-indigo-600 hover:text-indigo-900 pl-2"><mat-icon>edit</mat-icon></a>
                 </td>

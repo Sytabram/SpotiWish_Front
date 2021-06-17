@@ -1,4 +1,4 @@
-<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden select-none">
   <div class="flex flex-col mt-16 mx-28">
     <div class="bg-white shadow-md rounded-3xl p-5">
       <div class="flex flex-col sm:flex-row items-center">
@@ -7,31 +7,16 @@
       <div class="mt-5">
         <div class="form">
 
-          <div class="md:space-y-2 mb-3">
-            <label class="text-lg font-semibold text-gray-600 py-2">Cover de l'album <abbr
-              title="required">*</abbr></label>
-            <div class="flex items-center pt-2 pb-1">
-              <div class="w-14 h-14 mr-4 flex-none rounded-xl border overflow-hidden">
-                <img class="w-14 h-14 mr-4 object-cover"
-                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                     alt="Avatar Upload">
-              </div>
-              <label class="cursor-pointer ">
-                <span
-                  class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
-                <input type="file" class="hidden" :accept="accept">
-              </label>
-            </div>
-          </div>
-
           <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Nom de l'album <abbr title="required">*</abbr></label>
               <input placeholder="Nom de l'album"
+                     [(ngModel)]="album.Name"
                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                      required="required" type="text" name="username" id="username">
               <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
             </div>
+
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Durée <abbr title="required">*</abbr></label>
               <input placeholder="Full name"
@@ -43,23 +28,19 @@
 
           <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
             <div class="mb-3 md:space-y-2 w-full text-xs">
-              <label class="font-semibold text-gray-600 py-2">Date de sortie <abbr title="required">*</abbr></label>
-              <input
+              <label class="font-semibold text-gray-600 py-2">Année de sortie <abbr title="required">*</abbr></label>
+              <input placeholder="Année de sortie"
+                     [(ngModel)]="album.YearReleased"
                 class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                required="required" type="date" name="startCarrier" id="startCarrier">
+                required="required" type="text" name="startCarrier" id="startCarrier">
             </div>
 
-            <div class="w-full flex flex-col mb-3">
-              <label class="font-semibold text-gray-600 py-1">Type de sortie</label>
-              <select
-                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
-                required="required" name="integration[city_id]" id="role">
-                <option value="">Sélectionné le type de sortie</option>
-                <option value="">Single</option>
-                <option value="">Album</option>
-                <option value="">EP</option>
-              </select>
-              <p class="text-sm text-red-500 hidden mt-3">Veuillez remplir ce champ.</p>
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Nombre d'écoute <abbr title="required">*</abbr></label>
+              <input placeholder="Nombre d'écoute"
+                     [(ngModel)]="album.TotalHeard"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="startCarrier" id="nbrHeard">
             </div>
           </div>
 
@@ -74,7 +55,7 @@
               </button>
             </a>
             <a routerLink="/admin/artistes/albums" href="">
-              <button
+              <button (click)="saveAlbum()"
                 class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
                 Ajouter
               </button>
@@ -94,23 +75,9 @@
                        required="required" type="text" name="title" id="title">
                 <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
               </div>
-              <div class="">
-                <select class="bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 w-72"
-                        required="required" name="integration[city_id]" id="style">
-                  <option value="">Sélectionné un style de musique</option>
-                  <option value="">Rock</option>
-                  <option value="">Country</option>
-                  <option value="">Rap français</option>
-                  <option value="">Métal</option>
-                  <option value="">Chanson française</option>
-                  <option value="">Pop</option>
-                  <option value="">Rap US</option>
-                </select>
-                <p class="text-sm text-red-500 hidden mt-3">Veuillez remplir ce champ.</p>
-              </div>
               <div class="pt-2 pb-1">
                 <label class="">
-                  <input class="cursor-pointer" type="file" accept=".mp3">
+                  <input class="focus:outline-none cursor-pointer" type="file" accept=".mp3">
                 </label>
               </div>
             </div>
