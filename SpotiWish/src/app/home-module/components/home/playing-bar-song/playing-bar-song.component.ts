@@ -1,6 +1,6 @@
 import {MatSliderChange} from "@angular/material/slider";
 import {Track} from "ngx-audio-player";
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {MusicService} from "../../../services/music.service";
 
 @Component({
@@ -8,9 +8,11 @@ import {MusicService} from "../../../services/music.service";
   templateUrl: './playing-bar-song.component.html',
   styleUrls: ['./playing-bar-song.component.css']
 })
-export class PlayingBarSongComponent implements OnInit {
-  currentSong: any;
+export class PlayingBarSongComponent implements OnInit, OnDestroy {
+  public static id: any;
   paused: boolean = false;
+
+  currentSong: any;
 
   public audio = new Audio();
 
@@ -20,8 +22,13 @@ export class PlayingBarSongComponent implements OnInit {
     this.getMusicById();
   }
 
+  ngOnDestroy(): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+  }
+
   private getMusicById(){
-    this._musicService.getMusicById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
+    this._musicService.getMusicById(PlayingBarSongComponent.id).subscribe(
       data => {
         if (data) {
           this.currentSong = data;
