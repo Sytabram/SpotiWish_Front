@@ -14,10 +14,11 @@ import { PageEditUserComponent } from './components/page-user/page-edit-user/pag
 import { PageEditArtisteComponent } from './components/page-artiste/page-edit-artiste/page-edit-artiste.component';
 import { PageEditAlbumComponent } from './components/page-artiste/page-album/page-edit-album/page-edit-album.component';
 import { CardMusicComponent } from './components/page-artiste/page-album/page-edit-album/card-music/card-music.component';
+import { CardTableArtisteComponent } from './components/page-artiste/card-table-artiste/card-table-artiste.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, PageArtisteComponent, SidebarComponent, PageUserComponent, PageAlbumComponent, PageEditUserComponent, PageEditArtisteComponent, PageEditAlbumComponent, CardMusicComponent],
+  declarations: [AdminComponent, PageArtisteComponent, SidebarComponent, PageUserComponent, PageAlbumComponent, PageEditUserComponent, PageEditArtisteComponent, PageEditAlbumComponent, CardMusicComponent, CardTableArtisteComponent],
   imports: [
     BrowserModule,
     CommonModule,

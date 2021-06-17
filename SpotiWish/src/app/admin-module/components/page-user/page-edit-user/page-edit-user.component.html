@@ -1,4 +1,4 @@
-<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden select-none">
   <div class="flex flex-col mt-16 mx-28">
     <div class="bg-white shadow-md rounded-3xl p-5">
       <div class="flex flex-col sm:flex-row items-center">
@@ -7,25 +7,11 @@
       <div class="mt-5">
         <div class="form">
 
-          <div class="md:space-y-2 mb-3">
-            <label class="text-lg font-semibold text-gray-600 py-2">Photo de profil<abbr class="hidden" title="required">*</abbr></label>
-            <div class="flex items-center pt-2 pb-6">
-              <div class="w-14 h-14 mr-4 flex-none rounded-xl border overflow-hidden">
-                <img class="w-14 h-14 mr-4 object-cover"
-                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                     alt="Avatar Upload">
-              </div>
-              <label class="cursor-pointer ">
-                <span class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Choisir</span>
-                <input type="file" class="hidden" :multiple="multiple" :accept="accept">
-              </label>
-            </div>
-          </div>
-
           <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Username <abbr title="required">*</abbr></label>
               <input placeholder="Username"
+                     [(ngModel)]="user.UserName"
                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                      required="required" type="text" name="username" id="username">
               <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
@@ -33,6 +19,7 @@
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Email <abbr title="required">*</abbr></label>
               <input placeholder="example@gmail.com"
+                     [(ngModel)]="user.Email"
                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                      required="required" type="email" name="email" id="email">
               <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
@@ -43,40 +30,19 @@
             <div class="mb-3 md:space-y-2 w-full text-xs">
               <label class="font-semibold text-gray-600 py-2">Password <abbr title="required">*</abbr></label>
               <input placeholder="Password"
+                     [(ngModel)]="user.Password"
                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                      required="required" type="password" name="password" id="password">
               <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
             </div>
             <div class="mb-3 md:space-y-2 w-full text-xs">
-              <label class="font-semibold text-gray-600 py-2">Confirmer password <abbr title="required">*</abbr></label>
-              <input placeholder="Confirmer le password"
-                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                     required="required" type="password" name="confirmPassword" id="confirmPassword">
-              <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
-            </div>
-          </div>
-
-          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
-            <div class="w-full flex flex-col mb-3">
-              <label class="font-semibold text-gray-600 py-2">Genre</label>
-              <select
-                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
-                required="required" name="integration[city_id]" id="genre">
-                <option value="">Sélectionné un genre</option>
-                <option value="">Homme</option>
-                <option value="">Femme</option>
-                <option value="">Autres</option>
-              </select>
-            </div>
-            <div class="w-full flex flex-col mb-3">
-              <label class="font-semibold text-gray-600 py-2">Rôle <abbr title="required">*</abbr></label>
-              <select
-                class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
-                required="required" name="integration[city_id]" id="role">
-                <option value="">Sélectionné un rôle</option>
-                <option value="">User</option>
-                <option value="">Admin</option>
-              </select>
+              <div class="mb-3 md:space-y-2 w-full text-xs">
+                <label class="font-semibold text-gray-600 py-2">Confirm password <abbr title="required">*</abbr></label>
+                <input placeholder="Confirm password"
+                       class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                       required="required" type="password" name="Confirmpassword" id="Confirmpassword">
+                <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+              </div>
               <p class="text-sm text-red-500 hidden mt-3" id="error2">Veuillez remplir ce champ.</p>
             </div>
           </div>
@@ -87,7 +53,7 @@
             <a routerLink="/admin/users" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
               Annuler
             </button></a>
-            <a routerLink="/admin/users" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+            <a routerLink="/admin/users" href=""><button (click)="saveUser()" class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
               Ajouter
             </button></a>
           </div>

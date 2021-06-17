@@ -1,4 +1,4 @@
-<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+<div class="ml-64 h-screen bg-gray-200 flex flex-col select-none overflow-hidden">
   <main class="overflow-x-hidden overflow-y-auto">
     <div class="container mx-auto px-6 py-8">
       <span class="text-gray-700 text-2xl font-medium">Gérer les Artistes</span>
@@ -13,7 +13,7 @@
             <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600" type="text" placeholder="Rechercher un artiste">
           </div>
         </div>
-        <a routerLink="/admin/artistes/add-artiste" href=""><button class="bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
+        <a routerLink="/admin/add-artiste" href=""><button class="bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full focus:outline-none">
           Ajouter un artiste
         </button></a>
       </div>
@@ -22,7 +22,6 @@
       <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-
             <table class="min-w-full">
               <thead>
               <tr>
@@ -43,42 +42,55 @@
                 </th>
               </tr>
               </thead>
-
               <tbody class="bg-white">
-              <tr>
+              <tr *ngFor="let artists of artiste">
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
-                      <img class="h-10 w-10 rounded-full"
-                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                      <img class="h-10 w-10 rounded-full thumbnail-image" src="https://localhost:5001/Artist/{{artists.id}}/profilThumbnail" onerror="this.src='assets/images/not_image.jpg'" alt="alternative">
                     </div>
 
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">Lomepal</div>
+                      <div class="text-sm leading-5 font-medium text-gray-900">{{artists.name}}</div>
                     </div>
                   </div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900">3</div>
+                  <div class="text-sm leading-5 text-gray-900">{{artists.albums.length}}</div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <div class="text-sm leading-5 text-gray-900">100'562</div>
+                  <div class="text-sm leading-5 text-gray-900">{{artists.timeOfHeard}}</div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
-                  <a routerLink="/admin/artistes/albums" href="" class="text-indigo-600 hover:text-indigo-900">Page album/single</a>
+                  <a [routerLink]="'/admin/albums/artiste/' + artists.id " href="" class="text-indigo-600 hover:text-indigo-900">Page album/single</a>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900 pr-2"><mat-icon>delete</mat-icon></a>
-                  <a routerLink="/admin/artistes/edit-artiste" href="" class="text-indigo-600 hover:text-indigo-900 pl-2"><mat-icon>edit</mat-icon></a>
+                  <label class="cursor-pointer text-indigo-600 hover:text-indigo-900 pr-2">
+                    <span title="Ajouter/Modifier une image de profil">
+                      <mat-icon>add_a_photo</mat-icon>
+                      <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" (change)="SaveImageArtiste($event, artists.id)">
+                    </span>
+                  </label>
+                  <label class="cursor-pointer text-indigo-600 hover:text-indigo-900 pr-6">
+                    <span title="Ajouter/Modifier une image de couverture">
+                      <mat-icon>add_photo_alternate</mat-icon>
+                      <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" (change)="SaveBackgroundImageArtiste($event, artists.id)">
+                    </span>
+                  </label>
+                  <a (click)="deleteArtiste(artists.id)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">
+                    <mat-icon>delete</mat-icon>
+                  </a>
+                  <a [routerLink]="'/admin/edit-artiste/' + artists.id " href="" class="text-indigo-600 hover:text-indigo-900 pl-2">
+                    <mat-icon>edit</mat-icon>
+                  </a>
                 </td>
               </tr>
               </tbody>
             </table>
-
           </div>
         </div>
       </div>

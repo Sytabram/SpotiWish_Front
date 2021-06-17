@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Album} from '../../../../models/album';
+import {ArtisteService} from '../../../../services/artiste.service';
+
 
 @Component({
   selector: 'app-page-edit-album',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageEditAlbumComponent implements OnInit {
 
-  constructor() { }
+  album = {} as Album;
+
+  constructor(private _artisteService: ArtisteService) { }
 
   ngOnInit(): void {
+  }
+
+  onSaveAlbum(album: Album): void
+  {
+    this._artisteService.addAlbum(album).subscribe(
+      data =>
+      {
+        this.album = {} as Album;
+      },
+      error => {}
+    );
+  }
+
+  saveAlbum():void{
+    this.onSaveAlbum(this.album);
   }
 
 
