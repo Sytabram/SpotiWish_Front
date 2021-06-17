@@ -1,6 +1,6 @@
 import {MatSliderChange} from "@angular/material/slider";
 import {Track} from "ngx-audio-player";
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {MusicService} from "../../../services/music.service";
 
 @Component({
@@ -11,10 +11,12 @@ import {MusicService} from "../../../services/music.service";
 export class PlayingBarSongComponent implements OnInit, OnDestroy {
   public static id: any;
   paused: boolean = false;
+  time: number = 0;
 
   currentSong: any;
 
   public audio = new Audio();
+
 
   constructor(private _musicService: MusicService) { }
 
@@ -35,7 +37,11 @@ export class PlayingBarSongComponent implements OnInit, OnDestroy {
           console.log("Music: ", data);
         }
         this.audio.src = "https://localhost:5001/Music/" + this.currentSong.id + "/song";
+        this.audio.load();
         this.audio.play();
+        this.audio.addEventListener("timeupdate", () => {
+          this.time = this.audio.currentTime;
+        })
       },
       error => { }
     );
@@ -57,7 +63,9 @@ export class PlayingBarSongComponent implements OnInit, OnDestroy {
   }
 
   onCurrentTimeChange(event: any) {
-    console.log("Current time: ", event.value)
-    this.audio.currentTime = event.value
+  /*  console.log("Current time: ", event.value)
+    this.audio.pause();
+    this.audio.currentTime = 50;
+    this.audio.play();*/
   }
 }

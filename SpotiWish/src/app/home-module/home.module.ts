@@ -1,4 +1,3 @@
-
 import {HomeComponent} from './components/home/home.component';
 import {HomeRoutingModule} from './home-routing.module';
 import {MatIconModule} from '@angular/material/icon';
@@ -10,20 +9,24 @@ import {MatCardModule} from '@angular/material/card';
 import {ArtistCardComponent} from './components/suggest/artist-card/artist-card.component';
 import {FormsModule} from '@angular/forms';
 import {MatSliderModule} from "@angular/material/slider";
-import { ArtistComponent } from './components/artist/artist.component';
-import { AlbumCardComponent } from './components/artist/album-card/album-card.component';
-import { AlbumComponent } from './components/album/album.component';
-import { MusicCardComponent } from './components/album/music-card/music-card.component';
-import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
-import { PlayingBarSongComponent } from './components/home/playing-bar-song/playing-bar-song.component';
+import {ArtistComponent} from './components/artist/artist.component';
+import {AlbumCardComponent} from './components/artist/album-card/album-card.component';
+import {AlbumComponent} from './components/album/album.component';
+import {MusicCardComponent} from './components/album/music-card/music-card.component';
+import {CreatePlaylistComponent} from './components/create-playlist/create-playlist.component';
+import {PlayingBarSongComponent} from './components/home/playing-bar-song/playing-bar-song.component';
 import {IoPlayerModule} from "io-player";
 import {NgxAudioPlayerModule} from "ngx-audio-player";
 import {NgModule} from "@angular/core";
-import { SidebarHomeComponent } from './components/sidebar-home/sidebar-home.component';
+import {SidebarHomeComponent} from './components/sidebar-home/sidebar-home.component';
 import {CommonModule} from "@angular/common";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MusicCardAddPlaylistComponent} from './components/create-playlist/music-card-add-playlist/music-card-add-playlist.component';
+import {MusicCardSelectedPlaylistComponent} from './components/create-playlist/music-card-selected-playlist/music-card-selected-playlist.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
-  declarations: [HomeComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, SidebarHomeComponent],
+  declarations: [HomeComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, SidebarHomeComponent, MusicCardAddPlaylistComponent, MusicCardAddPlaylistComponent, MusicCardSelectedPlaylistComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -35,6 +38,8 @@ import {CommonModule} from "@angular/common";
     MatSliderModule,
     NgxAudioPlayerModule,
     IoPlayerModule,
+    MatFormFieldModule,
+    Ng2SearchPipeModule
   ]
 })
 export class HomeModule {

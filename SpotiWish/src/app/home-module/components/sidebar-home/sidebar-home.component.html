@@ -40,7 +40,7 @@
       <img src="../../../../assets/divider.png">
     </div>
     <div *ngIf="getIfSubscribed()">
-      <a *ngFor="let playlist of user.playlists" class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100" [routerLink]="'/home/playlist/' + playlist.id">{{playlist.name}}</a>
+      <a *ngFor="let playlist of user?.playlists" class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100" [routerLink]="'/home/playlist/' + playlist.id">{{playlist.name}}</a>
     </div>
   </div>
 </nav>

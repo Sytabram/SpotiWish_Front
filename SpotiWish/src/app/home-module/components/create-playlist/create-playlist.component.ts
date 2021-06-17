@@ -3,6 +3,10 @@ import {AlbumService} from "../../services/album.service";
 import {MusicService} from "../../services/music.service";
 import {PlayingBarSongComponent} from "../home/playing-bar-song/playing-bar-song.component";
 import {HomeComponent} from "../home/home.component";
+import {PlaylistComponent} from "../playlist/playlist.component";
+import {PlaylistsService} from "../../services/playlists.service";
+import {UserService} from "../../services/user.service";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-create-playlist',
@@ -10,12 +14,19 @@ import {HomeComponent} from "../home/home.component";
   styleUrls: ['./create-playlist.component.css']
 })
 export class CreatePlaylistComponent implements OnInit {
-  someField = "";
-  musics: any;
+  searchBox = "";
+  currentMusicsAvailable: any;
+  currentMusicsSelected: any;
 
-  constructor(private _musicService: MusicService) { }
+  playlistTitle: any;
+  playlistDescription: any;
+  private user: any;
+  private tokenInfo: any;
+
+  constructor(private _musicService: MusicService, private _playlistService: PlaylistsService, private _userService: UserService) { }
 
   ngOnInit(): void {
+    this.currentMusicsSelected = []
     this.getAlbum();
   }
 
@@ -23,15 +34,58 @@ export class CreatePlaylistComponent implements OnInit {
     this._musicService.getAllMusic().subscribe(
       data => {
         if (data) {
-          this.musics = data;
+          console.log("ALL MUSICS: ", data)
+          this.currentMusicsAvailable = data;
         }
       },
       error => { }
     );
   }
 
-  playThisSong(id) {
-    PlayingBarSongComponent.id = id;
-    HomeComponent.playingSong = !HomeComponent.playingSong
+  selected(song) {
+    this.currentMusicsAvailable = this.currentMusicsAvailable.filter(item => item.id !== song.id);
+    this.currentMusicsSelected.push(song);
+  }
+
+  unSelected(song) {
+    this.currentMusicsSelected = this.currentMusicsSelected.filter(item => item.id !== song.id);
+    this.currentMusicsAvailable.push(song);
+  }
+
+  onSavePlaylist(){
+    this._playlistService.addPlaylist(this.playlistTitle, this.playlistDescription, this.user.id ,this.currentMusicsSelected).subscribe(
+      response =>
+      {
+        console.log(response);
+      },
+      error => {}
+    );
+  }
+
+  savePlaylist() {
+    this.tokenInfo = this.getDecodedAccessToken(localStorage.getItem("token"))
+    this.getUserInfo(this.tokenInfo.Id);
+  }
+
+  private getUserInfo(id) {
+    this._userService.getUserById(id).subscribe(
+      data => {
+        if (data) {
+          console.log("User Info: ", data);
+          this.user = data;
+          this.onSavePlaylist();
+        }
+      },
+      error => { }
+    );
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try{
+      return jwtDecode(token);
+    }
+    catch(Error){
+      return null;
+    }
   }
 }

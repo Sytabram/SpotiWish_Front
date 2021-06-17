@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeComponent} from "../home/home.component";
 import {PlaylistsService} from "../../services/playlists.service";
+import {MatDialog} from "@angular/material/dialog";
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-playlist',
@@ -11,7 +12,13 @@ export class PlaylistComponent implements OnInit {
 
   playlistInfo: any;
 
-  constructor(private _playlistService: PlaylistsService) { }
+  constructor(private _playlistService: PlaylistsService, public dialog: MatDialog, private router: Router) {
+    this.router.events.subscribe((value => {
+      if (value instanceof NavigationEnd){
+        this.getPlaylistById()
+      }
+    }))
+  }
 
   ngOnInit(): void {
     this.getPlaylistById()
@@ -26,5 +33,19 @@ export class PlaylistComponent implements OnInit {
       },
       error => { }
     );
+  }
+
+  SaveImagePlaylist(event, id) {
+    let File: FileList = event.target.files;
+    if (File.length > 0){
+      this._playlistService.AddImagePlaylist(id, File[0]).subscribe(
+        reponse =>
+        {
+          console.log(reponse);
+          window.location.reload();
+        },
+        error => {}
+      );
+    }
   }
 }

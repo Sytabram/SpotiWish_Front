@@ -2,10 +2,13 @@
   <div class="bg-gradient-to-b from-black to-bordo" style="height: 22rem">
     <div class="flex select-none">
       <div>
-        <img class="ml-8 mt-7 h-60 w-60 cursor-pointer hover:bg-opacity-20" src="https://localhost:5001/playlist/{{playlistInfo.id}}/thumbnail" alt="logo liked song">
+        <label for="file-input">
+          <img onerror="this.src='assets/images/no_image_playlist.png'" class="ml-8 mt-7 h-60 w-60 cursor-pointer hover:bg-opacity-20" src="https://localhost:5001/playlist/{{playlistInfo?.id}}/thumbnail" alt="logo liked song">
+        </label>
+        <input class="hidden" id="file-input" type="file" accept="image/png, image/jpeg, image/jpg" (change)="SaveImagePlaylist($event, playlistInfo?.id)">
       </div>
       <div class="pt-36 pl-6 ">
-        <p class="text-white text-7xl font-black">{{playlistInfo.name}}</p>
+        <p class="text-white text-7xl font-black">{{playlistInfo?.name}}</p>
       </div>
     </div>
   </div>

@@ -22,7 +22,6 @@ export class SidebarHomeComponent implements OnInit {
   ngOnInit(): void {
     if (HomeComponent.subscribed){
       this.tokenInfo = this.getDecodedAccessToken(localStorage.getItem("token"));
-      console.log(this.tokenInfo)
     }
     this.getUserInfo(this.tokenInfo.Id)
   }
@@ -61,5 +60,4 @@ export class SidebarHomeComponent implements OnInit {
       error => { }
     );
   }
-
 }

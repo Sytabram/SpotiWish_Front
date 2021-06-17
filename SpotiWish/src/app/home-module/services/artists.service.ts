@@ -17,4 +17,5 @@ export class ArtistsService {
     return this.http.get(this.url + "/Artist/" + id)
   }
 
+
 }

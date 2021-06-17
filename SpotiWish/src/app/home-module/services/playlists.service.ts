@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -13,4 +13,34 @@ export class PlaylistsService {
     return this.http.get(this.url + "/playlist/" + id)
 
   }
+
+  AddImagePlaylist(id, image: File)
+  {
+    let formData = new FormData();
+    formData.append('file', image, image.name);
+    return this.http.post<File>(this.url + "/playlist/" + id + "/thumbnail", formData)
+  }
+
+  addPlaylist(playlistTitle, playlistDescription, userId, currentMusicsSelected){
+    let options = {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json'),
+    }
+    let result = currentMusicsSelected.map(a => a.id);
+    debugger
+    let json =
+      {
+        "name": playlistTitle,
+        "descrition": playlistDescription,
+        "userId": [
+          userId
+        ],
+        "musicId": result
+      }
+
+      console.log("json: ", json)
+
+     return this.http.post(this.url + "/playlist", json, options);
+  }
+
 }
