@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ArtistsService} from "../../services/artists.service";
 import {HomeComponent} from "../home/home.component";
+import {MusicService} from "../../services/music.service";
+import {PlayingBarSongComponent} from "../home/playing-bar-song/playing-bar-song.component";
 
 @Component({
   selector: 'app-suggest',
@@ -10,11 +12,17 @@ import {HomeComponent} from "../home/home.component";
 })
 export class SuggestComponent implements OnInit {
   artists: any;
+  tenMusic: any;
 
-  constructor(private router: Router, private _artistService: ArtistsService) { }
+  constructor(private router: Router, private _artistService: ArtistsService, private _musicService: MusicService) { }
 
   ngOnInit(): void {
-    this.getAllArtists()
+    if (!this.getIfSubscribed()){
+      this.getTenMusics()
+    }
+    else {
+      this.getAllArtists()
+    }
   }
 
   private getAllArtists() {
@@ -31,5 +39,22 @@ export class SuggestComponent implements OnInit {
 
   getIfSubscribed() {
     return HomeComponent.subscribed;
+  }
+
+  private getTenMusics() {
+    this._musicService.getTenMusics().subscribe(
+      data => {
+        if (data) {
+          this.tenMusic = data;
+        }
+      },
+      error => { }
+    );
+  }
+
+  playThisSong(id) {
+    PlayingBarSongComponent.id = id;
+    HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo
+    HomeComponent.playingSong = !HomeComponent.playingSong
   }
 }

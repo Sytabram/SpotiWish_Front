@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PlaylistsService} from "../../services/playlists.service";
 import {MatDialog} from "@angular/material/dialog";
 import {NavigationEnd, Router} from "@angular/router";
+import {PlayingBarSongComponent} from "../home/playing-bar-song/playing-bar-song.component";
+import {HomeComponent} from "../home/home.component";
 
 @Component({
   selector: 'app-playlist',
@@ -47,5 +49,27 @@ export class PlaylistComponent implements OnInit {
         error => {}
       );
     }
+  }
+
+  deletePlaylist(id) {
+    this._playlistService.deletePlaylist(id).subscribe(
+      response =>
+      {
+        console.log(response);
+        window.location.reload();
+      },
+      error => {}
+    );
+  }
+
+  playThisSong(id) {
+    PlayingBarSongComponent.id = id;
+    HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo
+    HomeComponent.playingSong = !HomeComponent.playingSong;
+  }
+
+  playThisFirstSong() {
+    PlayingBarSongComponent.id = this.playlistInfo?.musics[0].id;
+    HomeComponent.playingSong = !HomeComponent.playingSong;
   }
 }

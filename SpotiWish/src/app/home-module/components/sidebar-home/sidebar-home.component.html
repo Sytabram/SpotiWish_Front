@@ -3,7 +3,8 @@
   <div class="flex flex-wrap">
     <div class="items-center justify-left ml-6 mt-10">
       <a class="flex" [routerLink]="'/home'">
-        <img class="h-12 animate-spin" src="../../../../assets/images/spotify.svg">
+        <img *ngIf="getPlayingSongStatusForLogo()" class="h-12 animate-spin" src="../../../../assets/images/spotify.svg">
+        <img *ngIf="!getPlayingSongStatusForLogo()" class="h-12" src="../../../../assets/images/spotify.svg">
         <span class="mx-3 pt-2 select-none font-bold text-2xl text-white font-large">SpotiWish</span>
       </a>
     </div>
@@ -12,7 +13,7 @@
 
   <div class="mt-10">
     <ul>
-      <a [routerLink]="'/home'" href="">
+      <a *ngIf="getIfSubscribed()" [routerLink]="'/home'" href="">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row items-center border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>home</mat-icon>
@@ -20,7 +21,15 @@
         </li>
       </a>
 
-      <a *ngIf="tokenInfo.role == 'admin'" [routerLink]="'/admin'">
+      <a *ngIf="!getIfSubscribed()" [routerLink]="'/notSubscribed/best10musics'" href="">
+        <li
+          class="mb-2 px-4 py-4 text-gray-100 flex flex-row items-center border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
+          <mat-icon>home</mat-icon>
+          <span class="mx-4 font-medium mt-1">Accueil</span>
+        </li>
+      </a>
+
+      <a *ngIf="tokenInfo?.role == 'admin'" [routerLink]="'/admin'">
         <li
           class="mb-2 px-4 py-4 text-gray-100 flex flex-row items-center border-gray-300 hover:text-black hover:bg-gray-300 hover:font-bold rounded rounded-lg">
           <mat-icon>assignment_ind</mat-icon>
@@ -40,17 +49,15 @@
       <img src="../../../../assets/divider.png">
     </div>
     <div *ngIf="getIfSubscribed()">
-      <a *ngFor="let playlist of user?.playlists" class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100" [routerLink]="'/home/playlist/' + playlist.id">{{playlist.name}}</a>
+      <a *ngFor="let playlist of user?.playlists" class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-black hover:text-gray-100" [routerLink]="'/home/playlist/' + playlist?.id">{{playlist?.name}}</a>
     </div>
   </div>
 </nav>
 
-
-
 <!-- Subscribed Area -->
 <div *ngIf="getIfSubscribed()">
   <!-- Profile Button -->
-  <div
+  <div (click)="openDialogInfoUser()"
     class="text-white usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
     {{tokenInfo.unique_name}}
   </div>
@@ -58,7 +65,7 @@
   <!-- Logout Button -->
   <div (click)="logout()"
        class="text-white usernameButton cursor-pointer top-20 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
-    LOGOUT
+    Se déconnecter
   </div>
 </div>
 

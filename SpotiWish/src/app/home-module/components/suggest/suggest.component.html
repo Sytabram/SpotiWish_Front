@@ -1,14 +1,38 @@
 <div *ngIf="getIfSubscribed()" class="ml-64 h-screen" style="background-color: #121212">
 
   <div class="flex flex-wrap">
-    <app-artist-card *ngFor="let artist of artists" [artist]="artist" [routerLink]="'/home/artist/' + artist.id" ></app-artist-card>
+    <app-artist-card *ngFor="let artist of artists" [artist]="artist"
+                     [routerLink]="'/home/artist/' + artist.id"></app-artist-card>
   </div>
 </div>
 
 
 <div *ngIf="!getIfSubscribed()" class="ml-64 h-screen" style="background-color: #121212">
-  <div class="flex flex-wrap">
-    <p class="text-white">NOT SUBSCRIBED</p>
+
+    <div class="flex select-none flex-col-reverse h-96 text-white">
+      <span class="text-2xl p-5">En tant que invité tu peux accéder à 10 musiques !</span>
+      <span class="font-black text-6xl p-5 cursor-pointer hover:text-gray-clair" [routerLink]="'/subscribe'">Abonne toi en cliquant ici !</span>
+    </div>
+
+  <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
+
+    <div class="flex flex-col">
+
+      <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center justify-center">
+            <div class="ml-2 text-gray-400">Titre.</div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="ml-10 text-gray-400">Nb. d'écoutes.</div>
+          </div>
+          <p class="text-gray-400 mt-1">Date de sortie.</p>
+        </div>
+      </div>
+
+      <app-music-card *ngFor="let song of tenMusic" [song]="song" (click)="playThisSong(song.id)"></app-music-card>
+
+    </div>
   </div>
 </div>
 

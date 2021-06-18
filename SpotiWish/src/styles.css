@@ -10,3 +10,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+mat-dialog-container {
+  background: #282828 !important;
+}
+
+.green-snackbar {
+  background: #00B200;
+}
+
+.red-snackbar {
+  background: #B20000;
+}
+

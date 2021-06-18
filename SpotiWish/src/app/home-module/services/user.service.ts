@@ -13,4 +13,14 @@ export class UserService {
   getUserById(id) {
     return this.http.get(this.url + "/User/" + id)
   }
+
+  AddImageUser(id, image) {
+    let formData = new FormData();
+    formData.append('file', image, image.name);
+    return this.http.post<File>(this.url + "/user/" + id + "/thumbnail", formData)
+  }
+
+  removeImageUser(id) {
+    return this.http.delete<File>(this.url + "/user/" + id + "/thumbnail")
+  }
 }

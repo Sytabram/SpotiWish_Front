@@ -16,4 +16,8 @@ export class MusicService {
   getMusicById(id) {
     return this.http.get(this.url + "/Music/" + id)
   }
+
+  getTenMusics() {
+    return this.http.get(this.url + "/10music")
+  }
 }

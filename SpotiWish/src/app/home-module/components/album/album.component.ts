@@ -38,6 +38,8 @@ export class AlbumComponent implements OnInit {
 
   playThisSong(id) {
     PlayingBarSongComponent.id = id;
+    HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo
+
     HomeComponent.playingSong = !HomeComponent.playingSong
   }
 

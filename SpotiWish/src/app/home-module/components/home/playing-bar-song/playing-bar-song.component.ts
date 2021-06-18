@@ -2,6 +2,7 @@ import {MatSliderChange} from "@angular/material/slider";
 import {Track} from "ngx-audio-player";
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {MusicService} from "../../../services/music.service";
+import {HomeComponent} from "../home.component";
 
 @Component({
   selector: 'app-playing-bar-song',
@@ -39,6 +40,7 @@ export class PlayingBarSongComponent implements OnInit, OnDestroy {
         this.audio.src = "https://localhost:5001/Music/" + this.currentSong.id + "/song";
         this.audio.load();
         this.audio.play();
+        HomeComponent.playingSongForLogo = true
         this.audio.addEventListener("timeupdate", () => {
           this.time = this.audio.currentTime;
         })
@@ -49,11 +51,13 @@ export class PlayingBarSongComponent implements OnInit, OnDestroy {
 
   pauseSong() {
     this.audio.pause();
+    HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo;
     this.paused = true
   }
 
   playSong(){
     this.audio.play()
+    HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo;
     this.paused = false
   }
 

@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import jwtDecode from "jwt-decode";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserService} from "../../services/user.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogInfoUserComponent} from "./dialog-info-user/dialog-info-user.component";
 
 
 @Component({
@@ -17,17 +19,21 @@ export class SidebarHomeComponent implements OnInit {
 
   user: any;
 
-  constructor(private router: Router, private _userService: UserService) { }
+  constructor(private router: Router, private _userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (HomeComponent.subscribed){
       this.tokenInfo = this.getDecodedAccessToken(localStorage.getItem("token"));
+      this.getUserInfo(this.tokenInfo.Id)
     }
-    this.getUserInfo(this.tokenInfo.Id)
   }
 
   getPlayingSongStatus(){
     return HomeComponent.playingSong
+  }
+
+  getPlayingSongStatusForLogo(){
+    return HomeComponent.playingSongForLogo
   }
 
   logout() {
@@ -60,4 +66,16 @@ export class SidebarHomeComponent implements OnInit {
       error => { }
     );
   }
+
+  openDialogInfoUser() {
+    const dialogRef = this.dialog.open(DialogInfoUserComponent, {
+      width: '525px',
+      data: this.tokenInfo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }

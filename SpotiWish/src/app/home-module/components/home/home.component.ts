@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public static playingSong: boolean = false;
 
   public static subscribed = false
+  static playingSongForLogo: boolean = false;
 
   constructor(private router: Router, private _homeService: HomeService) {
   }

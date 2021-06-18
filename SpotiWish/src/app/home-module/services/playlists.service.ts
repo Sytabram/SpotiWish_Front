@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -7,27 +7,26 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class PlaylistsService {
   url = "https://localhost:5001"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getPlaylistById(id) {
     return this.http.get(this.url + "/playlist/" + id)
 
   }
 
-  AddImagePlaylist(id, image: File)
-  {
+  AddImagePlaylist(id, image: File) {
     let formData = new FormData();
     formData.append('file', image, image.name);
     return this.http.post<File>(this.url + "/playlist/" + id + "/thumbnail", formData)
   }
 
-  addPlaylist(playlistTitle, playlistDescription, userId, currentMusicsSelected){
+  addPlaylist(playlistTitle, playlistDescription, userId, currentMusicsSelected) {
     let options = {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json'),
     }
     let result = currentMusicsSelected.map(a => a.id);
-    debugger
     let json =
       {
         "name": playlistTitle,
@@ -38,9 +37,12 @@ export class PlaylistsService {
         "musicId": result
       }
 
-      console.log("json: ", json)
+    console.log("json: ", json)
 
-     return this.http.post(this.url + "/playlist", json, options);
+    return this.http.post(this.url + "/playlist", json, options);
   }
 
+  deletePlaylist(id) {
+    return this.http.delete(this.url + "/playlist/" + id)
+  }
 }

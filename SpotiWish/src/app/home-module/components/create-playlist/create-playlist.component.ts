@@ -57,6 +57,7 @@ export class CreatePlaylistComponent implements OnInit {
       response =>
       {
         console.log(response);
+        window.location.reload();
       },
       error => {}
     );
