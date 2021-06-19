@@ -70,7 +70,7 @@
                       <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" (change)="SaveImageAlbum($event, albums.id)" >
                     </span>
                   </label>
-                  <a (click)="openDialog(albums.id)" class="text-indigo-600 hover:text-indigo-900 pr-2">
+a                  <a (click)="openDialog(albums.id)" class="text-indigo-600 hover:text-indigo-900 pr-2 cursor-pointer">
                     <mat-icon>delete</mat-icon>
                   </a>
                   <a [routerLink]="['/admin/edit-album/' +artist.id + '/albums/' + albums.id]" href="" class="text-indigo-600 hover:text-indigo-900 pl-2">
