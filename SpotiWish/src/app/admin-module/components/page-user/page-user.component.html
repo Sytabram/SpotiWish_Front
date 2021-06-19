@@ -4,15 +4,7 @@
         <span class="text-gray-700 text-2xl font-medium">Gérer les utilisateurs (admin)</span>
 
 
-        <div class="flex justify-between items-center pt-10 py-3">
-          <div class="flex items-center">
-            <div class="relative mx-4 lg:mx-0">
-              <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-                <mat-icon>search</mat-icon>
-              </span>
-              <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600" type="text" placeholder="Rechercher un utilisateur">
-            </div>
-          </div>
+        <div class="flex justify-between flex-row-reverse pt-10 py-3">
           <a routerLink="/admin/users/add-user" href=""><button class="focus:outline-none bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
             Ajouter un admin
           </button></a>
@@ -66,13 +58,12 @@
 
                   <td class="px-6 py-3 text-center whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
                     <label class="cursor-pointer text-indigo-600 hover:text-indigo-900 pr-6">
-                    <span title="Ajouter/Modifier une image de couverture">
+                    <span title="Ajouter/Modifier une image de profil">
                       <mat-icon>add_a_photo</mat-icon>
                       <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" (change)="SaveImageUser($event, oneUser.id)">
                     </span>
                     </label>
-                    <a (click)="deleteArtiste(oneUser.id)" class="text-indigo-600 hover:text-indigo-900 pr-2"><mat-icon>delete</mat-icon></a>
-                    <a routerLink="/admin/users/edit-user" href="" class="text-indigo-600 hover:text-indigo-900 pl-2"><mat-icon>edit</mat-icon></a>
+                    <a (click)="openDialog(oneUser.id)" class="text-indigo-600 hover:text-indigo-900 pr-2"><mat-icon>delete</mat-icon></a>
                   </td>
                 </tr>
                 </tbody>

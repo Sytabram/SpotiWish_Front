@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DialogDeleteComponent} from '../dialog-delete/dialog-delete.component';
+
 
 @Component({
   selector: 'app-page-user',
@@ -13,17 +16,29 @@ export class PageUserComponent implements OnInit {
 
   users = {} as User;
 
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    setTimeout(() => {this.getUsers()}, 100)
+
+  }
+
+  openDialog(id): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      width: '350px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.deleteUser(id);
+      }
+    });
   }
 
   private getUsers(){
     this._userService.getUsers().subscribe(
       data => {
         if (data) {
-          console.log("Users: ", data);
           this.user = data;
         }
       },
@@ -37,7 +52,6 @@ export class PageUserComponent implements OnInit {
       this._userService.AddImageUser(id, File[0]).subscribe(
         reponse =>
         {
-          console.log(reponse);
           this.getUsers();
         },
         error => {}
@@ -45,13 +59,13 @@ export class PageUserComponent implements OnInit {
     }
   }
 
-  onDeleteArtiste(id): void
+  onDeleteUser(id): void
   {
-    this._userService.deleteArtiste(id).subscribe(() => this.getUsers())
+    this._userService.deleteUser(id).subscribe(() => this.getUsers())
   }
 
-  deleteArtiste(id): void
+  deleteUser(id): void
   {
-    this.onDeleteArtiste(id);
+    this.onDeleteUser(id);
   }
 }

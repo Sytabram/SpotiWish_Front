@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {ArtisteService} from '../../../services/artiste.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogDeleteComponent} from '../../dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-page-album',
@@ -12,18 +13,28 @@ export class PageAlbumComponent implements OnInit {
   artist: any;
   album: any;
 
-  constructor(public router: Router, private _artisteService: ArtisteService) { }
+  constructor(private _artisteService: ArtisteService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getOneArtiste();
-    this.getOneAlbum();
+    setTimeout(() => {this.getOneArtiste()}, 100)
+  }
+
+  openDialog(id): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      width: '350px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.deleteAlbum(id);
+      }
+    });
   }
 
   private getOneArtiste(){
     this._artisteService.getArtisteById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
       data => {
         if (data) {
-          console.log("Artist: ", data);
           this.artist = data;
           this.album = this.artist.albums
         }
@@ -32,18 +43,22 @@ export class PageAlbumComponent implements OnInit {
     );
   }
 
-  private getOneAlbum(){
-    this._artisteService.getAlbumById(this.artist.albums.id).subscribe(
-      data => {
-        if (data) {
-          console.log("Album: ", data);
-          this.album = data;
-        }
-      },
-      error => { }
-    );
+  SaveImageAlbum(event, id): void{
+    let File: FileList = event.target.files;
+    if (File.length > 0){
+      this._artisteService.AddImageAlbum(id, File[0]).subscribe(
+        response =>
+        {
+          this.getOneArtiste();
+        },
+        error => {}
+      );
+    }
   }
 
-  private get
+  deleteAlbum(id): void
+  {
+    this._artisteService.deleteAlbum(id).subscribe(() => this.getOneArtiste())
+  }
 
 }

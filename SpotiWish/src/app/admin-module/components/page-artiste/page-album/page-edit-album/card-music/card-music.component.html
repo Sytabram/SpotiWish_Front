@@ -1,16 +1,31 @@
-<div class="font-sans flex flex-col text-center mb-1 content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow  w-full">
-  <div class="flex justify-between space-x-20">
-    <p class="text-2xl no-underline pt-1 text-grey-darkest font-sans">Titre: Texas</p>
-    <p class="text-2xl no-underline pt-1 text-grey-darkest font-sans">Style: Country</p>
-    <p class="text-2xl no-underline pt-1 text-grey-darkest font-sans">Fichier: Beau-la-folie.mp3</p>
+<div class="font-sans flex flex-col mb-1 sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow w-full">
+  <div class="flex flex-row space-x-20">
+
+    <div class="flex-shrink-0 h-10 w-10 self-center">
+      <img class="h-10 w-10 rounded-full thumbnail-image" src="https://localhost:5001/Music/{{music.id}}/thumbnail" onerror="this.src='assets/images/not_image.jpg'" alt="alternative">
+    </div>
+
+    <div class="self-center text-lg text-grey-darkest font-sans">
+      <p>Titre: "{{music.name}}" </p>
+    </div>
+
+    <div class="self-center text-lg no-underline text-grey-darkest font-sans">
+      <p>Nombre d'écoute: {{music.timeOfPlays}}</p>
+    </div>
+
+    <div class="self-center text-lg no-underline text-grey-darkest font-sans">
+      <p>Audio actuel:</p>
+    </div>
+
+    <div class="">
+      <audio controls src="https://localhost:5001/Music/{{music.id}}/song"></audio>
+    </div>
+
   </div>
 
   <div class="self-center">
-    <a routerLink="" href="">
-      <button
-        class="focus:outline-none bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
-        Supprimer
-      </button>
-    </a>
+    <button class="focus:outline-none bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+      Supprimer
+    </button>
   </div>
 </div>

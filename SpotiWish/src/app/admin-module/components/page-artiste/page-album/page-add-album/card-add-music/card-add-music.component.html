@@ -1,0 +1,29 @@
+<div class="font-sans flex flex-col mb-1 content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow w-full">
+  <div class="flex space-x-20">
+
+    <div class="self-center text-lg no-underline text-grey-darkest font-sans">
+      <p class="self-center">Titre: "{{music.name}}" </p>
+    </div>
+
+    <div class="text-lg no-underline pt-1 text-grey-darkest font-sans">
+      <p>Nombre d'écoute: {{music.timeOfPlays}}</p>
+    </div>
+
+    <div class="no-underline pt-1 flex flex-row text-grey-darkest font-sans">
+      <p class="text-lg">Son: </p>
+      <input class="ml-6" type="file" accept=".mp3" (change)="SaveSongMusic($event, music.id)" >
+    </div>
+
+    <div class="no-underline pt-1 flex flex-row text-grey-darkest font-sans">
+      <p class="text-lg">Image: </p>
+      <input class="ml-3" type="file" accept="image/png, image/jpeg, image/jpg" (change)="SaveImage($event, music.id)" >
+    </div>
+
+  </div>
+
+  <div class="self-center">
+    <button (click)="deleteMusic(music)" class="focus:outline-none bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+      Supprimer
+    </button>
+  </div>
+</div>

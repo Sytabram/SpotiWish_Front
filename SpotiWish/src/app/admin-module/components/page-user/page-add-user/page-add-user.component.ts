@@ -3,11 +3,11 @@ import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
 
 @Component({
-  selector: 'app-page-edit-user',
-  templateUrl: './page-edit-user.component.html',
-  styleUrls: ['./page-edit-user.component.css']
+  selector: 'app-page-add-user',
+  templateUrl: './page-add-user.component.html',
+  styleUrls: ['./page-add-user.component.css']
 })
-export class PageEditUserComponent implements OnInit {
+export class PageAddUserComponent implements OnInit {
 
   user = {} as User;
 
@@ -22,7 +22,6 @@ export class PageEditUserComponent implements OnInit {
       data =>
       {
         this.user = {} as User;
-        window.location.reload();
       },
       error =>
       {}
@@ -32,7 +31,5 @@ export class PageEditUserComponent implements OnInit {
   saveUser():void{
     this.onSaveUser(this.user);
   }
-
-
 
 }
