@@ -53,7 +53,7 @@ export class ArtisteService {
       {
         "name": music.Name,
         "timeOfPlays": music.TimeOfPlays,
-        "style": "null",
+        "authorId": window.location.href.substr(window.location.href.lastIndexOf('/') + 1),
         "albumId": [0],
         "playlistId": [0],
       }
