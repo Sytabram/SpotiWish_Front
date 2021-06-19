@@ -23,7 +23,6 @@ export class AlbumComponent implements OnInit {
     this._albumService.getAlbumById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
       data => {
         if (data) {
-          console.log("Album: ", data);
           this.album = data;
         }
         this.getCoverURL(this.album.id)

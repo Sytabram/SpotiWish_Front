@@ -34,7 +34,6 @@ export class CreatePlaylistComponent implements OnInit {
     this._musicService.getAllMusic().subscribe(
       data => {
         if (data) {
-          console.log("ALL MUSICS: ", data)
           this.currentMusicsAvailable = data;
         }
       },
@@ -72,7 +71,6 @@ export class CreatePlaylistComponent implements OnInit {
     this._userService.getUserById(id).subscribe(
       data => {
         if (data) {
-          console.log("User Info: ", data);
           this.user = data;
           this.onSavePlaylist();
         }

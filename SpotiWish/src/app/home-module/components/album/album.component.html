@@ -1,11 +1,26 @@
-<div class="ml-64 h-screen" style="background-color: #121212">
+<div class="ml-64 h-screen overflow-hidden" style="background-color: #121212">
 
+  <div class="bg-cover" [ngStyle]="{'background-image': 'url(' + coverURL + ')'}">
 
-  <div class="flex select-none flex-col-reverse h-96 text-white">
-    <span class="text-2xl p-5">{{album?.yearReleased}} • {{album?.musics?.length}} songs.</span>
-    <span class="font-black text-6xl p-5">{{album?.name}}</span>
+    <div class="flex flex-row items-end h-96 text-white z-30">
+      <div class="w-56	h-56 m-8">
+        <img src="https://localhost:5001/Album/{{album.id}}/Thumbnail" class="object-cover w-full h-full">
+      </div>
+      <div class="flex flex-col mb-8">
+        <span class="text-base ">Album</span>
+        <span class="font-black text-8xl">{{album?.name}}</span>
+        <div class="flex text-2xl mb-8 space-x-2 items-center text-gray-300">
+          <div class="w-7 h-7">
+            <img src="https://localhost:5001/Artist/{{album?.artists[0].id}}/profilThumbnail" class="object-cover w-full h-full rounded-full">
+          </div>
+          <span class="text-white hover:underline cursor-pointer" [routerLink]="'/home/artist/' + album?.artists[0].id">{{album?.artists[0].name}}</span>
+          <span>{{album?.yearReleased}}</span>
+          <span>•</span>
+          <span>{{album?.musics?.length}} songs.</span>
+        </div>
+      </div>
+    </div>
   </div>
-
 
   <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
 

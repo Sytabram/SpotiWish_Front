@@ -29,8 +29,7 @@ export class SuggestComponent implements OnInit {
     this._artistService.getAllArtists().subscribe(
       data => {
         if (data) {
-          console.log("Artists: ", data);
-          this.artists = data;
+            this.artists = data;
         }
       },
       error => { }

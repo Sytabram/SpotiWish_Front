@@ -35,7 +35,6 @@ export class PlayingBarSongComponent implements OnInit, OnDestroy {
       data => {
         if (data) {
           this.currentSong = data;
-          console.log("Music: ", data);
         }
         this.audio.src = "https://localhost:5001/Music/" + this.currentSong.id + "/song";
         this.audio.load();

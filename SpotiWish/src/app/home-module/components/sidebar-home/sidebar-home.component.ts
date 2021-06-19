@@ -38,8 +38,10 @@ export class SidebarHomeComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("token");
-    HomeComponent.subscribed = false
-    this.router.navigateByUrl('/login')
+    HomeComponent.subscribed = false;
+    HomeComponent.playingSongForLogo = false;
+    HomeComponent.playingSong = false;
+    this.router.navigateByUrl('/login');
   }
 
   getIfSubscribed() {
@@ -59,7 +61,6 @@ export class SidebarHomeComponent implements OnInit {
     this._userService.getUserById(id).subscribe(
       data => {
         if (data) {
-          console.log("User Info: ", data);
           this.user = data;
         }
       },

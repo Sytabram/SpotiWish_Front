@@ -23,7 +23,6 @@ export class ArtistComponent implements OnInit {
     this._artistService.getArtistById(window.location.href.substr(window.location.href.lastIndexOf('/') + 1)).subscribe(
       data => {
         if (data) {
-          console.log("Artist: ", data);
           this.artist = data;
         }
         this.getCoverURL(this.artist.id)

@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     this._loginService.loginUser(this.username, this.password)
     timer(300).subscribe(x =>
     {
-      console.log(this._loginService)
       if (this._loginService.isAuthenticated)
       {
         this.router.navigate(['/home']);
