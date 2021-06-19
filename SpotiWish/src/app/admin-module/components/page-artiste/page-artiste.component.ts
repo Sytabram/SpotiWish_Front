@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ArtisteService} from '../../services/artiste.service';
-import {Artiste} from '../../models/artist';
-
+import {DialogDeleteComponent} from '../dialog-delete/dialog-delete.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-page-artiste',
@@ -9,23 +9,30 @@ import {Artiste} from '../../models/artist';
   styleUrls: ['./page-artiste.component.css']
 })
 export class PageArtisteComponent implements OnInit {
-
   artiste: any;
-  artist = {} as Artiste;
-  durationInSeconds = 5;
+  searchBox: any;
 
-  constructor(private _artisteService: ArtisteService) { }
-
+  constructor(private _artisteService: ArtisteService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getArtists();
+    setTimeout(() => {this.getArtists()}, 100)
+  }
+
+  openDialog(id): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.deleteArtiste(id);
+      }
+    });
   }
 
   private getArtists() {
     this._artisteService.getArtistes().subscribe(
       data => {
         if (data) {
-          console.log("Artists: ", data);
           this.artiste = data;
         }
       },
@@ -39,7 +46,6 @@ export class PageArtisteComponent implements OnInit {
       this._artisteService.AddImageArtiste(id, File[0]).subscribe(
         reponse =>
         {
-          console.log(reponse);
           this.getArtists();
         },
         error => {}
@@ -53,21 +59,16 @@ export class PageArtisteComponent implements OnInit {
       this._artisteService.AddBackgroundImageArtiste(id, File[0]).subscribe(
         reponse =>
         {
-          console.log(reponse);
+          alert("Vous venez d'ajouter une image de couverture")
         },
         error => {}
       );
     }
   }
 
-  onDeleteArtiste(id): void
-  {
-    this._artisteService.deleteArtiste(id).subscribe(() => this.getArtists())
-  }
-
   deleteArtiste(id): void
   {
-    this.onDeleteArtiste(id);
+    this._artisteService.deleteArtiste(id).subscribe(() => this.getArtists())
   }
 
 }

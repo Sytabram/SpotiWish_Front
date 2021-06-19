@@ -27,7 +27,6 @@ export class PlaylistsService {
         .set('Content-Type', 'application/json'),
     }
     let result = currentMusicsSelected.map(a => a.id);
-    debugger
     let json =
       {
         "name": playlistTitle,
@@ -37,10 +36,8 @@ export class PlaylistsService {
         ],
         "musicId": result
       }
-
       console.log("json: ", json)
-
-     return this.http.post(this.url + "/playlist", json, options);
+      return this.http.post(this.url + "/playlist", json, options);
   }
 
 }

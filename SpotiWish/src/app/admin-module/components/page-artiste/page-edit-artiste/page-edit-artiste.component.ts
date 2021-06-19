@@ -8,31 +8,47 @@ import {ArtisteService} from '../../../services/artiste.service';
   styleUrls: ['./page-edit-artiste.component.css']
 })
 export class PageEditArtisteComponent implements OnInit {
+  coverURL = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+  artist: any;
 
   artiste = {} as Artiste;
+  currentAlbums: any;
+  newArtisteName: any;
+  newTimeOfHeard: any;
 
   constructor(private _artisteService: ArtisteService) { }
 
   ngOnInit(): void {
+    this.currentAlbums = []
+    this.getOneArtiste();
   }
 
-  onSaveArtiste(artiste: Artiste): void
+  onSaveArtiste(): void
   {
-    this._artisteService.addArtiste(artiste).subscribe(
+    this._artisteService.updateArtiste(this.coverURL, this.newArtisteName, this.newTimeOfHeard, this.currentAlbums).subscribe(
       data =>
       {
-        this.artiste = {} as Artiste;
-        window.location.reload();
+        console.log(data);
       },
-      error =>
-      {}
+      error => {}
     );
   }
 
-  saveArtiste():void{
-    this.onSaveArtiste(this.artiste);
+  saveArtiste(): void{
+    this.onSaveArtiste();
   }
 
-
-
+  private getOneArtiste(){
+    this._artisteService.getArtisteById(this.coverURL).subscribe(
+      data => {
+        if (data) {
+          this.artist = data;
+          this.currentAlbums = this.artist.albums;
+          this.newArtisteName = this.artist.name;
+          this.newTimeOfHeard = this.artist.timeOfHeard;
+        }
+      },
+      error => { }
+    );
+  }
 }

@@ -34,7 +34,7 @@ export class UserService {
         .post(this.urlPostUser, json, options);
   }
 
-  deleteArtiste(id){
+  deleteUser(id){
     let options = {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json'),
