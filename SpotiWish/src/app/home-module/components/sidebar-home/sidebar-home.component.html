@@ -72,7 +72,7 @@
 <!-- Not Subscribed Area -->
 <div *ngIf="!getIfSubscribed()">
   <!-- Leave Button -->
-  <div [routerLink]="'/login'"
+  <div (click)="leave()"
     class="text-white usernameButton cursor-pointer top-5 right-5 fixed w-auto h-10 font-medium items-center flex rounded-full p-3 select-none">
     Leave
   </div>
@@ -81,3 +81,5 @@
 
 <!-- Playing Song Bar -->
 <app-playing-bar-song *ngIf="getPlayingSongStatus()"></app-playing-bar-song>
+
+<app-playing-bar-song-not-subscribe *ngIf="getPlayingSongNotSubscribeStatus()"></app-playing-bar-song-not-subscribe>

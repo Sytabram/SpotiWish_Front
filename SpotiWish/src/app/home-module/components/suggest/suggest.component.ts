@@ -4,6 +4,7 @@ import {ArtistsService} from "../../services/artists.service";
 import {HomeComponent} from "../home/home.component";
 import {MusicService} from "../../services/music.service";
 import {PlayingBarSongComponent} from "../home/playing-bar-song/playing-bar-song.component";
+import {PlayingBarSongNotSubscribeComponent} from "../home/playing-bar-song-not-subscribe/playing-bar-song-not-subscribe.component";
 
 @Component({
   selector: 'app-suggest',
@@ -44,6 +45,7 @@ export class SuggestComponent implements OnInit {
     this._musicService.getTenMusics().subscribe(
       data => {
         if (data) {
+          console.log("TenMusics: ", data)
           this.tenMusic = data;
         }
       },
@@ -51,9 +53,9 @@ export class SuggestComponent implements OnInit {
     );
   }
 
-  playThisSong(id) {
-    PlayingBarSongComponent.id = id;
+  playThisSong(song) {
+    PlayingBarSongNotSubscribeComponent.currentSong = song;
     HomeComponent.playingSongForLogo = !HomeComponent.playingSongForLogo
-    HomeComponent.playingSong = !HomeComponent.playingSong
+    HomeComponent.playingSongNotSubscribe = !HomeComponent.playingSongNotSubscribe
   }
 }

@@ -79,4 +79,13 @@ export class SidebarHomeComponent implements OnInit {
     });
   }
 
+  getPlayingSongNotSubscribeStatus() {
+    return HomeComponent.playingSongNotSubscribe
+  }
+
+  leave() {
+    HomeComponent.playingSongForLogo = false;
+    HomeComponent.playingSongNotSubscribe = false;
+    this.router.navigateByUrl('/login');
+  }
 }

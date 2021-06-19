@@ -17,10 +17,12 @@ import {TokenInterceptor} from "./interceptor/auth.interceptor";
   ],
   imports: [
     BrowserModule,
+
     AdminModule,
     LoginModule,
     HomeModule,
     AppRoutingModule,
+
     BrowserAnimationsModule,
     HttpClientModule,
     NgxAudioPlayerModule,

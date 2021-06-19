@@ -10,6 +10,7 @@ import {HomeService} from "../../services/home.service";
 export class HomeComponent implements OnInit {
   public href = ""
   public static playingSong: boolean = false;
+  public static playingSongNotSubscribe: boolean = false;
 
   public static subscribed = false
   static playingSongForLogo: boolean = false;

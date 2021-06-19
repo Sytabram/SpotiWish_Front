@@ -28,9 +28,10 @@ import { DialogInfoUserComponent } from './components/sidebar-home/dialog-info-u
 import {MatButtonModule} from "@angular/material/button";
 import { MusicCardPlaylistComponent } from './components/playlist/music-card-playlist/music-card-playlist.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { PlayingBarSongNotSubscribeComponent } from './components/home/playing-bar-song-not-subscribe/playing-bar-song-not-subscribe.component';
 
 @NgModule({
-  declarations: [HomeComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, SidebarHomeComponent, MusicCardAddPlaylistComponent, MusicCardAddPlaylistComponent, MusicCardSelectedPlaylistComponent, DialogInfoUserComponent, MusicCardPlaylistComponent],
+  declarations: [HomeComponent, PlaylistComponent, SuggestComponent, ArtistCardComponent, CreatePlaylistComponent, ArtistComponent, AlbumCardComponent, AlbumComponent, MusicCardComponent, PlayingBarSongComponent, SidebarHomeComponent, MusicCardAddPlaylistComponent, MusicCardAddPlaylistComponent, MusicCardSelectedPlaylistComponent, DialogInfoUserComponent, MusicCardPlaylistComponent, PlayingBarSongNotSubscribeComponent],
     imports: [
         CommonModule,
         HomeRoutingModule,
