@@ -53,7 +53,6 @@ export class PlayingBarSongNotSubscribeComponent implements OnInit {
   }
 
   onVolumeChange(event: any) {
-    console.log("Current volume: ", event.value)
     this.audio.volume = event.value
   }
 

@@ -73,7 +73,6 @@ export class ArtisteService {
         "timeOfHeard": numberListeningArtiste,
         "albumsId": result
       }
-      console.log("json: ", json)
       return this.http
         .post(this.urlPostArtist + "/" + id, json, options);
   }
@@ -95,7 +94,6 @@ export class ArtisteService {
           ],
         "musicId": result
       }
-    console.log("json: ", json)
     return this.http
       .post(this.url + "/Album/" + id, json, options);
   }

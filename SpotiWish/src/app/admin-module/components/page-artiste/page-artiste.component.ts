@@ -23,9 +23,10 @@ export class PageArtisteComponent implements OnInit {
       width: '350px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        this.deleteArtiste(id);
-      }
+      // !! NE MARCHE PAS !!
+      // if (result){
+      //   this.deleteArtiste(id);
+      // }
     });
   }
 

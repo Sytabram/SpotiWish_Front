@@ -29,9 +29,10 @@ export class PageUserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        this.deleteUser(id);
-      }
+      // !! NE MARCHE PAS !!
+      // if (result){
+      //   this.deleteArtiste(id);
+      // }
     });
   }
 

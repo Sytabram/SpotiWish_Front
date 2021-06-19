@@ -15,7 +15,6 @@ export class CardMusicComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSongMusic(this.music.id)
-    console.log(this.songs)
   }
 
   SaveSongMusic(event, id): void{
@@ -24,7 +23,6 @@ export class CardMusicComponent implements OnInit {
       this._musicService.AddSongMusic(id, File[0]).subscribe(
         response =>
         {
-          console.log(response);
         },
         error => {}
       );

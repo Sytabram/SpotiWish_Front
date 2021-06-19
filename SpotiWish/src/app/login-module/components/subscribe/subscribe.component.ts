@@ -51,7 +51,6 @@ export class SubscribeComponent implements OnInit {
     this._loginService.newUser(this.email, this.username, this.passwordConfirm).subscribe(
       data => {
         if (data) {
-          console.log(data)
           this.router.navigateByUrl('/login')
         }
       },

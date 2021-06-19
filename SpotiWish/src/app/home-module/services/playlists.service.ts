@@ -37,7 +37,6 @@ export class PlaylistsService {
         "musicId": result
       }
 
-    console.log("json: ", json)
 
     return this.http.post(this.url + "/playlist", json, options);
   }

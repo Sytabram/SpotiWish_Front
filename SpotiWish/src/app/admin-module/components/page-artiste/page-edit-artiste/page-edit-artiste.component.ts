@@ -28,7 +28,6 @@ export class PageEditArtisteComponent implements OnInit {
     this._artisteService.updateArtiste(this.coverURL, this.newArtisteName, this.newTimeOfHeard, this.currentAlbums).subscribe(
       data =>
       {
-        console.log(data);
       },
       error => {}
     );

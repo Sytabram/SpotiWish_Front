@@ -45,7 +45,6 @@ export class SuggestComponent implements OnInit {
     this._musicService.getTenMusics().subscribe(
       data => {
         if (data) {
-          console.log("TenMusics: ", data)
           this.tenMusic = data;
         }
       },

@@ -28,7 +28,6 @@ export class DialogInfoUserComponent implements OnInit {
       this._userService.AddImageUser(id, File[0]).subscribe(
         reponse =>
         {
-          console.log(reponse);
           window.location.reload();
         },
         error => {}
@@ -40,7 +39,6 @@ export class DialogInfoUserComponent implements OnInit {
     this._userService.removeImageUser(id).subscribe(
       reponse =>
       {
-        console.log(reponse);
         window.location.reload();
       },
       error => {}

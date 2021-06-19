@@ -43,7 +43,6 @@ export class PlaylistComponent implements OnInit {
       this._playlistService.AddImagePlaylist(id, File[0]).subscribe(
         reponse =>
         {
-          console.log(reponse);
           window.location.reload();
         },
         error => {}
@@ -55,7 +54,6 @@ export class PlaylistComponent implements OnInit {
     this._playlistService.deletePlaylist(id).subscribe(
       response =>
       {
-        console.log(response);
         window.location.reload();
       },
       error => {}

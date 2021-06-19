@@ -25,9 +25,10 @@ export class PageAlbumComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        this.deleteAlbum(id);
-      }
+      // !! NE MARCHE PAS !!
+      // if (result){
+      //   this.deleteArtiste(id);
+      // }
     });
   }
 

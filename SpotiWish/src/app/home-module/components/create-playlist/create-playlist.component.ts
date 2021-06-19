@@ -34,7 +34,6 @@ export class CreatePlaylistComponent implements OnInit {
     this._musicService.getAllMusic().subscribe(
       data => {
         if (data) {
-          console.log("Musics: ", data)
           this.currentMusicsAvailable = data;
         }
       },
@@ -56,7 +55,6 @@ export class CreatePlaylistComponent implements OnInit {
     this._playlistService.addPlaylist(this.playlistTitle, this.playlistDescription, this.user.id ,this.currentMusicsSelected).subscribe(
       response =>
       {
-        console.log(response);
         window.location.reload();
       },
       error => {}
