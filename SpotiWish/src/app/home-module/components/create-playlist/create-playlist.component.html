@@ -1,0 +1,73 @@
+<div class="ml-64 h-screen ">
+  <div class="bg-gradient-to-t from-one-black to-two-black" style="height: 22rem">
+    <div class="flex select-none">
+      <div class="ml-8 mt-7 h-60 w-60 flex items-center justify-center bg-gray-fonce border-2 border-transparent">
+        <img class="h-12 w-12" src="../../../../assets/music.png" alt="logo music">
+      </div>
+      <div class="flex flex-col pt-36 pl-6 ">
+        <input [(ngModel)]="playlistTitle" class="text-white text-7xl font-black bg-transparent focus:outline-none" maxlength="25"
+               spellcheck="false" placeholder="Ma playlist">
+        <input [(ngModel)]="playlistDescription" class="text-white text-2xl font-black bg-transparent focus:outline-none" maxlength="25"
+               spellcheck="false" placeholder="Ma Description">
+      </div>
+    </div>
+  </div>
+  <div class="h-full" style="background-color: #121212">
+    <div class="pl-8 pt-10">
+      <button (click)="savePlaylist()"
+        class="bg-gray-500 focus:outline-none hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-full mr-5">
+        Ajouter la playlist
+      </button>
+    </div>
+
+    <div class="w-auto border border-two-black mt-10"></div>
+
+    <div class="pl-8 pt-8 select-none">
+      <p class="text-white text-2xl font-medium">Cherchons du contenu à ajouter à votre playlist</p>
+    </div>
+
+    <div class="mt-4 ml-8 relative text-gray-600 flex flex-col">
+      <input [(ngModel)]="searchBox" type="text" name="search" placeholder="Rechercher un son..." class="h-10 w-80 px-5 rounded-full text-sm focus:outline-none">
+
+      <div *ngIf="currentMusicsSelected?.length > 0" class="flex flex-col">
+        <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center justify-center">
+              <div class="ml-2 text-gray-400">Titre.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Nb. d'écoutes.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Date de sortie.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Actions.</div>
+            </div>
+          </div>
+        </div>
+        <app-music-card-selected-playlist *ngFor="let song of currentMusicsSelected" [song]="song" (unSelected)="unSelected($event)"></app-music-card-selected-playlist>
+      </div>
+
+      <div *ngIf="currentMusicsAvailable?.length > 0" class="flex flex-col">
+        <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center justify-center">
+              <div class="ml-2 text-gray-400">Titre.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Nb. d'écoutes.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Date de sortie.</div>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="ml-10 text-gray-400">Actions.</div>
+            </div>
+          </div>
+        </div>
+        <app-music-card-add-playlist *ngFor="let song of currentMusicsAvailable | filter:searchBox" [song]="song" (selected)="selected($event)"></app-music-card-add-playlist>
+      </div>
+    </div>
+  </div>
+</div>

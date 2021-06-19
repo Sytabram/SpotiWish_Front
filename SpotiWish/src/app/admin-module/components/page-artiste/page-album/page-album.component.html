@@ -1,0 +1,88 @@
+<div class="ml-64 h-screen bg-gray-200 flex flex-col select-none overflow-hidden">
+  <main class="overflow-x-hidden overflow-y-auto">
+    <div class="container mx-auto px-6 py-8">
+      <span class="text-gray-700 text-2xl font-medium">Gérer les albums de {{artist?.name}}</span>
+
+
+      <div class="flex justify-between flex-row-reverse pt-10 py-3">
+        <a [routerLink]="'/admin/add-album/artiste/' + artist?.id" href=""><button class="focus:outline-none bg-indigo-600 hover:bg-indigo-900 text-white font-medium py-3 px-5 mr-3 rounded-full">
+          Ajouter un album
+        </button></a>
+      </div>
+
+
+      <div class="flex flex-col">
+        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+          <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+
+            <table class="min-w-full">
+              <thead>
+                <tr>
+                  <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Nom
+                  </th>
+                  <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Nbr musiques
+                  </th>
+                  <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Année de sortie
+                  </th>
+                  <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Durée
+                  </th>
+                  <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="bg-white">
+              <tr *ngFor="let albums of album">
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-10 w-10 rounded-full"
+                           src="https://localhost:5001/Album/{{albums.id}}/thumbnail" onerror="this.src='assets/images/no-album.gif'" alt="alternative">
+                    </div>
+
+                    <div class="ml-4">
+                      <div class="text-sm leading-5 font-medium text-gray-900">{{albums.name}}</div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">{{albums.numOfSong}}</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">{{albums.yearReleased}}</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">{{albums.totalTime}} h</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                  <label class="cursor-pointer text-indigo-600 hover:text-indigo-900 pr-6">
+                    <span title="Ajouter/Modifier une image de couverture">
+                      <mat-icon>add_photo_alternate</mat-icon>
+                      <input type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" (change)="SaveImageAlbum($event, albums.id)" >
+                    </span>
+                  </label>
+a                  <a (click)="openDialog(albums.id)" class="text-indigo-600 hover:text-indigo-900 pr-2 cursor-pointer">
+                    <mat-icon>delete</mat-icon>
+                  </a>
+                  <a [routerLink]="['/admin/edit-album/' +artist.id + '/albums/' + albums.id]" href="" class="text-indigo-600 hover:text-indigo-900 pl-2">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

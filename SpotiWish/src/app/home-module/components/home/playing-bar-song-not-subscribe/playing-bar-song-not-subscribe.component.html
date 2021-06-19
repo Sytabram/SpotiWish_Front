@@ -1,0 +1,42 @@
+<div class="w-full h-24 bottom-0 fixed flex justify-between items-center border-t border-gray-500 select-none z-50"
+     style="background-color: #181818">
+
+  <!-- Song Info -->
+  <div class="h-full w-auto flex items-center px-5">
+    <img src="https://localhost:5001/Music/{{getCurrentSong()?.id}}/thumbnail" alt="image3" class="object-cover shadow-2xl"
+         style="width: 80px; height: 80px">
+    <div class="flex flex-col ">
+      <span class="text-white pl-2 text-base">{{getCurrentSong()?.name}}</span>
+      <span class="text-gray-400 pl-2 text-xs">{{getCurrentSong()?.author.name}}</span>
+    </div>
+  </div>
+
+
+  <!--  Song Action (Time bar, next, previous,...)-->
+  <div class="h-full w-1/3 flex items-center flex flex-col">
+
+    <div class="w-full h-2/3 flex items-center justify-center">
+      <mat-icon class="mr-5 text-white cursor-pointer">skip_previous</mat-icon>
+      <mat-icon *ngIf="!paused" class="text-white cursor-pointer" (click)="pauseSong()">pause_circle_filled</mat-icon>
+      <mat-icon *ngIf="paused" class="text-white cursor-pointer" (click)="playSong()">play_circle_filled</mat-icon>
+      <mat-icon class="ml-5 text-white cursor-pointer">skip_next</mat-icon>
+    </div>
+
+    <div class="w-full h-1/3 flex items-center justify-center">
+      <span class="text-gray-400 text-xs">{{time.toFixed(0)}}</span>
+      <mat-slider (change)="onCurrentTimeChange($event)" class="w-full" [value]="time.toFixed(0)" step="1"
+                  max="{{audio.duration.toFixed(0)}}"></mat-slider>
+      <span class="text-gray-400 text-xs">{{audio.duration.toFixed(0)}}</span>
+    </div>
+  </div>
+
+  <!-- Song Volume -->
+  <div class="h-full w-auto flex items-center px-5">
+    <div class="flex justify-center items-center">
+      <mat-icon class="text-xl mb-2 text-white">volume_up</mat-icon>
+      <mat-slider (input)="onVolumeChange($event)" class="w-full" value="{{audio.volume}}" step="0.1"
+                  max="1"></mat-slider>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden">
+  <div class="flex flex-col mt-16 mx-28">
+    <div class="bg-white shadow-md rounded-3xl p-5">
+      <div class="flex flex-col sm:flex-row items-center">
+        <h2 class="font-semibold text-lg mr-auto">Ajouter un artiste</h2>
+      </div>
+      <div class="mt-5">
+        <div class="form">
+
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Nom <abbr title="required">*</abbr></label>
+              <input placeholder="Nom (Pseudo)"
+                     [(ngModel)]="artiste.Name"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="name" id="name">
+              <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+            </div>
+
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Nombre d'écoute <abbr title="required">*</abbr></label>
+              <input placeholder="Nombre d'écoute (Ex : 25000)"
+                     [(ngModel)]="artiste.TimeOfHeard"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     type="text" name="timeOfHeard" id="timeOfHeard">
+            </div>
+          </div>
+
+          <p class="text-xs text-red-500 text-right my-3">Les champs obligatoires sont marqués d'un astérisque <abbr title="Required field">*</abbr></p>
+
+          <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+            <a routerLink="/admin/artistes" href=""><button class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+              Annuler
+            </button></a>
+            <a routerLink="/admin/artistes" href=""><button (click)="saveArtiste()" class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+              Ajouter
+            </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

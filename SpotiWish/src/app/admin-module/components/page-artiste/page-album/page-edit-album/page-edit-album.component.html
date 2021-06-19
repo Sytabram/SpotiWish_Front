@@ -1,0 +1,99 @@
+<div class="ml-64 h-screen bg-gray-200 flex flex-col overflow-hidden select-none">
+  <div class="flex flex-col mt-16 mx-28">
+    <div class="bg-white shadow-md rounded-3xl p-5">
+      <div class="flex flex-col sm:flex-row items-center">
+        <h2 class="font-semibold text-lg mr-auto">Modifier un album</h2>
+      </div>
+      <div class="mt-5">
+        <div class="form">
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Nom de l'album <abbr title="required">*</abbr></label>
+              <input value="{{album?.name}}"
+                     [(ngModel)]="newAlbumName"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="username" id="username">
+              <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+            </div>
+
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Durée <abbr title="required">*</abbr></label>
+              <input value="{{album?.totalTime}}"
+                     [(ngModel)]="newAlbumTotalTime"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="fullName" id="fullName">
+              <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+            </div>
+          </div>
+
+          <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Année de sortie <abbr title="required">*</abbr></label>
+              <input value="{{album?.yearReleased}}"
+                     [(ngModel)]="newAlbumYearReleased"
+                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                required="required" type="text" name="startCarrier" id="startCarrier">
+            </div>
+
+            <div class="mb-3 md:space-y-2 w-full text-xs">
+              <label class="font-semibold text-gray-600 py-2">Nombre d'écoute <abbr title="required">*</abbr></label>
+              <input value="{{album?.totalHeard}}"
+                     [(ngModel)]="newAlbumTotalHeard"
+                     class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                     required="required" type="text" name="startCarrier" id="nbrHeard">
+            </div>
+          </div>
+
+          <p class="text-xs text-red-500 text-right my-3">Les champs obligatoires sont marqués d'un astérisque <abbr
+            title="Required field">*</abbr></p>
+
+          <div class="md:space-y-2 mb-3">
+            <label class="text-lg font-semibold text-gray-600 py-2">Ajouter un/des sons <abbr title="required">*</abbr></label>
+          </div>
+
+          <div class="flex items-center mb-10 pb-5 border-b-2 border-black">
+            <div class="flex justify-between space-x-5">
+              <div class="">
+                <input placeholder="Titre du son"
+                       class="appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                       required="required" type="text" name="title" id="title">
+                <p class="text-red text-xs hidden">Veuillez remplir ce champ.</p>
+              </div>
+              <div class="pt-2 pb-1">
+                <label class="">
+                  <input class="focus:outline-none cursor-pointer" type="file" accept=".mp3">
+                </label>
+              </div>
+            </div>
+            <div class="flex w-full justify-end">
+              <div class="">
+                <a routerLink="/admin/artistes/albums" href="">
+                  <button
+                    class="focus:outline-none bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+                    Ajouter le son
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <app-card-music *ngFor="let music of musics" [music]="music"></app-card-music>
+
+          <div class="mt-5 mb-12 mt-12 text-right md:space-x-3 md:block flex flex-col-reverse">
+            <a routerLink="/admin/artistes/albums" href="">
+              <button class="focus:outline-none mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                Annuler
+              </button>
+            </a>
+            <a [routerLink]="'/admin/artistes'" href="">
+              <button (click)="saveAlbum()" class="focus:outline-none mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+                Sauvegarder
+              </button>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

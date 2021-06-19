@@ -1,0 +1,34 @@
+<div class="ml-64 h-screen overflow-hidden">
+
+  <div class="bg-cover" [ngStyle]="{'background-image': 'url(' + coverURL + ')'}">
+
+    <div class="flex flex-row items-end h-96 text-white z-30">
+      <div class="w-56	h-56 m-8">
+        <img src="https://localhost:5001/Artist/{{artist.id}}/profilThumbnail" class="object-cover w-full h-full rounded-full">
+      </div>
+      <div class="flex flex-col mb-8">
+        <span class="text-base ">Artiste</span>
+        <span class="font-black text-8xl">{{artist?.name}}</span>
+        <span class="text-2xl mb-8">{{artist?.timeOfHeard}} écoutes par mois.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col bg-gradient-to-t from-black to-bordo text-white h-full">
+    <span class="p-5 text-2xl font-black">Albums</span>
+    <div class="flex flex-col">
+      <div class="ml-5 mb-5 w-3/4 rounded p-3 border-b border-gray-clair">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center justify-center">
+            <div class="ml-2 text-gray-400">Titre.</div>
+          </div>
+          <p class="text-gray-400 mt-1">Durée totale.</p>
+        </div>
+      </div>
+      <app-album-card *ngFor="let album of artist?.albums" [album]=album [routerLink]="'/home/album/' + album.id"></app-album-card>
+    </div>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,46 @@
+<div class="ml-64 h-screen overflow-hidden">
+  <div class="bg-gradient-to-b from-black to-bordo" style="height: 22rem">
+    <div class="flex select-none">
+      <div>
+        <label for="file-input-playlist">
+          <img matTooltip="Change image..." [matTooltipShowDelay]="0" [matTooltipHideDelay]="0" onerror="this.src='assets/images/no_image_playlist.png'" class="ml-8 mt-7 h-60 w-60 cursor-pointer hover:bg-opacity-20" src="https://localhost:5001/playlist/{{playlistInfo?.id}}/thumbnail" alt="">
+        </label>
+        <input class="hidden" id="file-input-playlist" type="file" accept="image/png, image/jpeg, image/jpg" (change)="SaveImagePlaylist($event, playlistInfo?.id)">
+      </div>
+      <div class="pt-36 pl-6 ">
+        <p class="text-white text-7xl font-black">{{playlistInfo?.name}}</p>
+        <p class="text-gray-400 text-2xl bg-transparent">{{playlistInfo?.descrition}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-full" style="background-color: #121212">
+    <div class="flex pl-8 pt-10">
+      <button (click)="playThisFirstSong()" class="focus:outline-none flex items-center justify-center bg-red-page rounded-full h-16 w-16 py-4 px-4 motion-safe:hover:scale-110">
+        <img class="ml-1 h-6" src="../../../../assets/play-arrow.png" alt="logo liked song">
+      </button>
+      <div class="pt-4 pl-8">
+        <button [routerLink]="'/home'" (click)="deletePlaylist(playlistInfo?.id)" class="bg-gray-500 focus:outline-none hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-full">Supprimer la playlist</button>
+      </div>
+    </div>
+
+    <div class="ml-5 mt-3 w-3/4 rounded p-3 border-b border-gray-clair select-none">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center justify-center">
+          <div class="ml-2 text-gray-400">Titre.</div>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="ml-10 text-gray-400">Nb. d'écoutes.</div>
+        </div>
+        <p class="text-gray-400 mt-1">Date de sortie.</p>
+      </div>
+    </div>
+
+    <div class="pt-3">
+       <app-music-card-playlist *ngFor="let song of playlistInfo?.musics" [song]="song" (click)="playThisSong(song.id)"></app-music-card-playlist>
+    </div>
+
+    <div class="mt-4 ml-8 relative text-gray-600 flex">
+    </div>
+  </div>
+</div>

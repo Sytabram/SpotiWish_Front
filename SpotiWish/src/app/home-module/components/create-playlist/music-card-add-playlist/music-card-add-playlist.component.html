@@ -1,0 +1,27 @@
+<div class="ml-5 w-3/4 rounded p-3 bg-opacity-0 bg-white hover:bg-opacity-20">
+  <div class="flex select-none justify-between items-center">
+    <div class="w-1/4">
+      <div class="flex items-center justify-start">
+        <img src="https://localhost:5001/Music/{{song.id}}/thumbnail" alt="" class="object-cover"
+             style="height: 40px; width: 40px">
+        <div class="ml-5 text-white text-base text-white">{{song.name}}</div>
+      </div>
+    </div>
+    <div class="w-1/4 flex justify-center">
+      <span class="text-center text-gray-400 mt-1">{{song.timeOfPlays}}</span>
+    </div>
+    <div class="w-1/4 flex justify-center">
+      <span class="text-center text-gray-400 mt-1">{{song.releaseDate}}</span>
+    </div>
+    <div class="w-1/4 flex justify-end">
+      <a class="cursor-pointer" (click)="selectThisMusic(song)">
+        <li
+          class="mb-2 px-4 py-4 text-black flex flex-row items-center border-gray-300 bg-gray-300 font-bold rounded rounded-lg">
+          <mat-icon>add_box</mat-icon>
+          <span class="mx-4 font-medium">Ajouter</span>
+        </li>
+      </a>
+    </div>
+  </div>
+</div>
+
